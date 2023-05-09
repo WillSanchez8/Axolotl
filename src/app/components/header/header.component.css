@@ -1,5 +1,5 @@
 .mi-logo{
-  height: 400px;
+  height: 350px;
   margin-left: 400px;
   display: flex;
 }
@@ -14,4 +14,10 @@
   margin-top: 75px;
   margin-left: -101px;
   transform: rotate(90deg);
+}
+.qs{
+  margin-left: 1300px;
+}
+.contenedor-grecas{
+  margin-top: -450px;
 }
