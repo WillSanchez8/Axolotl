@@ -1,10 +1,11 @@
 .mi-logo{
   height: 400px;
-  margin-left: 400px
+  margin-left: 400px;
+  display: flex;
 }
 .g-izq{
   height: 80px;
-  margin-top: -180pt;
+  margin-top: -680pt;
   margin-left: -160px;
   transform: rotate(90deg);
 }
