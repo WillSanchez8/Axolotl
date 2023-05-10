@@ -5,11 +5,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 
 
-const routes: Routes = [
-  {path:'',component: BodyComponent},
-  {path:'acerca de', component: FooterComponent},
-  {path:'contacto',component:HeaderComponent}
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
