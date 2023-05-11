@@ -28,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 /**
  * Services
@@ -61,7 +62,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSlideToggleModule,
     FormsModule,
     MatDividerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,2 +1,5 @@
-<!--Se manda el evento del toggle-->
-<mat-slide-toggle (ngModelChange)="onChange($event)" [(ngModel)]="isDarkThemeActive">Modo Oscuro</mat-slide-toggle>
+<div style="display: flex; align-items: center; justify-content: flex-end;">
+    <mat-icon>wb_sunny</mat-icon>
+    <mat-slide-toggle (ngModelChange)="onChange($event)" [(ngModel)]="isDarkThemeActive">Modo Oscuro</mat-slide-toggle>
+    <mat-icon>brightness_3</mat-icon>
+</div>
