@@ -39,7 +39,8 @@ export class BuscadorComponent implements OnInit {
   }
 
   obtenerImagenes() {
-    const query = 'Flor';
+    const query = this.myControl.value;
+    if (query) {
     this.nounPexelsService.getImages(query).subscribe(
       (data: any) => {
         this.fotos = data.photos;
@@ -49,6 +50,7 @@ export class BuscadorComponent implements OnInit {
         console.log(error);
       }
     );
+  }
   }
 
   private _filter(value: string): string[] {
