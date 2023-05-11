@@ -3,26 +3,26 @@
 @include mat.core();
 
 $my-primary: (
-    50 : #f4eaef,
-    100 : #e4cad7,
-    200 : #d3a6bc,
-    300 : #c182a1,
-    400 : #b3688d,
-    500 : #a64d79,
-    600 : #9e4671,
-    700 : #953d66,
-    800 : #8b345c,
-    900 : #7b2549,
-    A100 : #ffbcd7,
-    A200 : #ff89b8,
-    A400 : #ff5699,
-    A700 : #ff3c8a,
+    50 : #f7e2e2,
+    100 : #ebb7b7,
+    200 : #dd8787,
+    300 : #cf5656,
+    400 : #c53232,
+    500 : #bb0e0e,
+    600 : #b50c0c,
+    700 : #ac0a0a,
+    800 : #a40808,
+    900 : #960404,
+    A100 : #ffc1c1,
+    A200 : #ff8e8e,
+    A400 : #ff5b5b,
+    A700 : #ff4141,
     contrast: (
         50 : #000000,
         100 : #000000,
         200 : #000000,
-        300 : #000000,
-        400 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
         500 : #ffffff,
         600 : #ffffff,
         700 : #ffffff,
@@ -36,36 +36,36 @@ $my-primary: (
 );
 
 $my-accent: (
-  50 : #f9e0e0,
-  100 : #f0b3b3,
-  200 : #e68080,
-  300 : #db4d4d,
-  400 : #d42626,
-  500 : #cc0000,
-  600 : #c70000,
-  700 : #c00000,
-  800 : #b90000,
-  900 : #ad0000,
-  A100 : #ffd7d7,
-  A200 : #ffa4a4,
-  A400 : #ff7171,
-  A700 : #ff5858,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #ffffff,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #000000,
-      A700 : #000000,
-  )
+    50 : #f7e2e2,
+    100 : #ebb7b7,
+    200 : #dd8787,
+    300 : #cf5656,
+    400 : #c53232,
+    500 : #bb0e0e,
+    600 : #b50c0c,
+    700 : #ac0a0a,
+    800 : #a40808,
+    900 : #960404,
+    A100 : #ffc1c1,
+    A200 : #ff8e8e,
+    A400 : #ff5b5b,
+    A700 : #ff4141,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
 );
 
 $my-warn: (
@@ -101,11 +101,109 @@ $my-warn: (
     )
 );
 
+$my-primary-dark: (
+    50 : #f4e7f8,
+    100 : #e3c4ed,
+    200 : #d19de1,
+    300 : #bf76d5,
+    400 : #b158cc,
+    500 : #a33bc3,
+    600 : #9b35bd,
+    700 : #912db5,
+    800 : #8826ae,
+    900 : #7719a1,
+    A100 : #f1d6ff,
+    A200 : #e1a3ff,
+    A400 : #d070ff,
+    A700 : #c757ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$my-accent-dark: (
+    50 : #f5e6ed,
+    100 : #e5c0d3,
+    200 : #d496b6,
+    300 : #c36c99,
+    400 : #b64d83,
+    500 : #a92d6d,
+    600 : #a22865,
+    700 : #98225a,
+    800 : #8f1c50,
+    900 : #7e113e,
+    A100 : #ffb2ce,
+    A200 : #ff7fae,
+    A400 : #ff4c8e,
+    A700 : #ff327e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$my-warn-dark: (
+    50 : #f6e1e1,
+    100 : #e9b4b4,
+    200 : #da8282,
+    300 : #cb4f4f,
+    400 : #bf2a2a,
+    500 : #b40404,
+    600 : #ad0303,
+    700 : #a40303,
+    800 : #9c0202,
+    900 : #8c0101,
+    A100 : #ffb8b8,
+    A200 : #ff8585,
+    A400 : #ff5252,
+    A700 : #ff3939,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
 
 $light-theme: mat.define-light-theme((
  color: (
-   primary: mat.define-palette($my-primary, A700),
-   accent: mat.define-palette($my-accent, 400),
+   primary: mat.define-palette($my-primary, 500),
+   accent: mat.define-palette($my-accent, 300),
    warn: mat.define-palette($my-warn, 900),
  ),
  typography: mat.define-typography-config(),
@@ -114,8 +212,9 @@ $light-theme: mat.define-light-theme((
 
 $dark-theme: mat.define-dark-theme((
  color: (
-   primary: mat.define-palette($my-primary, A700),
-   accent: mat.define-palette($my-accent, 900),
+   primary: mat.define-palette($my-primary-dark, A200),
+   accent: mat.define-palette($my-accent-dark, A400),
+   warn: mat.define-palette($my-warn-dark, A700),
  ),
  typography: mat.define-typography-config(),
  density: 0,
@@ -123,3 +222,7 @@ $dark-theme: mat.define-dark-theme((
 
 // Emit theme-dependent styles for common features used across multiple components.
 @include mat.all-component-themes($light-theme);
+
+.dark-mode{
+  @include mat.all-component-colors($dark-theme);
+}
