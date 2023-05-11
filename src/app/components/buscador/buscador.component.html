@@ -141,3 +141,9 @@
     </div>
   </div>
 </section>
+<div class="image-container">
+  <button (click)="obtenerImagenes()">Generar Imagenes</button>
+  <div class="image-item" *ngFor="let foto of fotos">
+    <img [src]="foto.src.medium" alt="Imagen">
+  </div>
+</div>
