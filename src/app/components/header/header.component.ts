@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   onClick() {
-    console.log('Botón presionado');
+    console.log('Botón presionado prueba');
   }
   
 }
