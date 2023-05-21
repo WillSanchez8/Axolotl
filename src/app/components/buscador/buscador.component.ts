@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
 //importar servicio noun-pexels.service.ts
-import { NounPexelsService } from '../../noun-pexels.service';
+import { NounPexelsService } from 'src/services/noun-pexels.service';
 
 
 /**
