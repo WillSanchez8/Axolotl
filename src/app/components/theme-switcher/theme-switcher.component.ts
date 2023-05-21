@@ -4,7 +4,7 @@ import { Component, Inject } from '@angular/core';
 @Component({
   selector: 'app-theme-switcher',
   templateUrl: './theme-switcher.component.html',
-  styleUrls: ['./theme-switcher.component.css']
+  styleUrls: ['./theme-switcher.component.scss']
 })
 export class ThemeSwitcherComponent {
   isDarkThemeActive: boolean = false;//almacena el valor del toggle

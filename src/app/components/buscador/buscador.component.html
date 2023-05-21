@@ -1,26 +1,24 @@
 <div class="center-content">
   <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill" (keydown.enter)="obtenerImagenes()">
-      <mat-label>Buscar</mat-label>
-      <input type="text"
-             placeholder="Hombre, Mujer, Flores, etc."
-             aria-label="Buscar"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto">
-      <mat-icon matSuffix>search</mat-icon>       
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of options" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
+    <mat-form-field class="width" (keydown.enter)="obtenerImagenes()">
+      <input
+        type="text"
+        placeholder="¿Quieres saber como funciona Axolotl? Da click en el botón búsqueda IA"
+        aria-label="Buscar"
+        matInput
+        [formControl]="myControl"
+      />
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
-</form>
+  </form>
+  <button mat-raised-button color="primary">
+    Búsqueda IA<br />
+    <mat-icon>highlight</mat-icon>
+  </button>
 </div>
-
 
 <div class="image-container">
   <div class="image-item" *ngFor="let foto of fotos">
-    <img [src]="foto.src.medium" alt="Imagen">
+    <img [src]="foto.src.medium" alt="Imagen" />
   </div>
 </div>
