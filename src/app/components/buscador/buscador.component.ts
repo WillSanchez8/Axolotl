@@ -18,7 +18,7 @@ export class BuscadorComponent {
     if (query) {
       this.nounPexelsService.getImages(query).subscribe(
         (data: any) => {
-          this.fotos = data.photos;
+          this.fotos = data;
           console.log(this.fotos);
         },
         (error) => {
@@ -26,5 +26,8 @@ export class BuscadorComponent {
         }
       );
     }
+  }
+  onEnter() {
+    this.obtenerImagenes();
   }
 }
