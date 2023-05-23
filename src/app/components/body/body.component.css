@@ -1,0 +1,21 @@
+
+  .contenedor-grecas{
+    position: fixed;
+    top:10px;
+    left:10px;
+    .g-izq{
+        height: 80px;
+        margin-top: -680pt;
+        margin-left: -160px;
+        transform: rotate(90deg);
+      }
+      .g-izq1{
+        height: 80px;
+        margin-top: 75px;
+        margin-left: -101px;
+        transform: rotate(90deg);
+      }
+      .qs{
+        margin-left: 1300px;
+      }
+  }
