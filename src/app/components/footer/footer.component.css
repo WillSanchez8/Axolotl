@@ -1,7 +1,7 @@
 
 /* FOOTER
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.page-footer {
+/*.page-footer {
     font-size: 16px;
     text-align: center;
     padding: 20px;
@@ -10,9 +10,9 @@
   
   .page-footer span {
     color: var(--red);
-  }
- /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@400;700&isplay=swap');
- 
+  }*/
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@400;700&isplay=swap');
+
   *{
     margin: 0;
     padding: 0;
@@ -77,4 +77,4 @@
         padding: 35px 0px;
     }
 }
-  */
+  
