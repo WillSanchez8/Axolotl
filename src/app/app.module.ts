@@ -34,6 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
  * Services
 **/
 import { HttpClientModule } from '@angular/common/http';
+import { Ejemplo1Component } from './componentes/ejemplo1/ejemplo1.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     NavigationComponent,
     BuscadorComponent,
-    ThemeSwitcherComponent
+    ThemeSwitcherComponent,
+    Ejemplo1Component
   ],
   imports: [
     BrowserModule,
