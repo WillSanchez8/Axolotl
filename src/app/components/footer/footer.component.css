@@ -31,3 +31,34 @@
     grid-gap: 50px;
     padding: 45px 0px;
   }
+  .pie-pagina .grupo1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pie-pagina .grupo1 .box figure img{
+    width: 250px;
+  }
+  .pie-pagina .grupo1 .box h2{
+    color:#fff;
+    margin-bottom: 25px;
+    font-size: 20px;
+  }
+  .pie-pagina .grupo1 .box p{
+    color: #efefef;
+    margin-bottom: 10px;
+  }
+  .pie-pagina .grupo1 .red-social a{
+    display: online-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #4b0953;
+    text-align: center;
+    transition: all 300ms ease;
+  }
