@@ -1,7 +1,7 @@
 
 /* FOOTER
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-/*.page-footer {
+.page-footer {
     font-size: 16px;
     text-align: center;
     padding: 20px;
@@ -10,8 +10,8 @@
   
   .page-footer span {
     color: var(--red);
-  }*/
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@400;700&isplay=swap');
+  }
+ /* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@400;700&isplay=swap');
   *{
     margin: 0;
     padding: 0;
@@ -62,3 +62,18 @@
     text-align: center;
     transition: all 300ms ease;
   }
+  .pie-pagina .grupo1 .red-social a:hover{
+    color:pink;
+}
+.pie-pagina .grupo2 small{
+    font-size: 15px;
+}
+@media  screen and(max-width:800px) {
+    .pie-pagina .grupo1{
+        width: 100px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 35px 0px;
+    }
+}
+  */
