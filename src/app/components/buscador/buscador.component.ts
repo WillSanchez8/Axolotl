@@ -1,61 +1,33 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { NounPexelsService } from 'src/services/noun-pexels.service';
 
-//importar servicio noun-pexels.service.ts
-import { NounPexelsService } from '../../noun-pexels.service';
-
-
-/**
- * @title Filter autocomplete
- */
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
-  styleUrls: ['./buscador.component.css']
+  styleUrls: ['./buscador.component.scss'],
 })
-
-//implementar servicio noun-pexels.service.ts
-
-
-export class BuscadorComponent implements OnInit {
-
-  //variabe para almacenar las imagenes
+export class BuscadorComponent {
+  myControl = new FormControl('');
   fotos: any[] = [];
 
-  constructor(private nounPexelsService: NounPexelsService) { }
-
-  myControl = new FormControl('');
-  options: string[] = ['Flor', 'Perro', 'Gato'];
-  filteredOptions!: Observable<string[]>;
-
-  ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
-    //this.obtenerImagenes();
-  }
+  constructor(private nounPexelsService: NounPexelsService) {}
 
   obtenerImagenes() {
     const query = this.myControl.value;
     if (query) {
-    this.nounPexelsService.getImages(query).subscribe(
-      (data: any) => {
-        this.fotos = data.photos;
-        console.log(this.fotos);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+      this.nounPexelsService.getImages(query).subscribe(
+        (data: any) => {
+          this.fotos = data;
+          console.log(this.fotos);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  onEnter() {
+    this.obtenerImagenes();
   }
 }

@@ -29,6 +29,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
 
 /**
  * Services
@@ -65,7 +66,8 @@ import { Ejemplo1Component } from './componentes/ejemplo1/ejemplo1.component';
     FormsModule,
     MatDividerModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
