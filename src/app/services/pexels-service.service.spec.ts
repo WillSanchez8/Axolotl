@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { NounPexelsService } from './noun-pexels.service';
+import { PexelsServiceService } from './pexels-service.service';
 
-describe('NounPexelsService', () => {
-  let service: NounPexelsService;
+describe('PexelsServiceService', () => {
+  let service: PexelsServiceService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(NounPexelsService);
+    service = TestBed.inject(PexelsServiceService);
   });
 
   it('should be created', () => {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { NounPexelsService } from 'src/services/noun-pexels.service';
+import { PexelsServiceService } from '../../services/pexels-service.service';
 
 @Component({
   selector: 'app-buscador',
@@ -8,17 +8,21 @@ import { NounPexelsService } from 'src/services/noun-pexels.service';
   styleUrls: ['./buscador.component.scss'],
 })
 export class BuscadorComponent {
+
+  //myControl permite obtener el valor del input
   myControl = new FormControl('');
+
+  //fotos es un array que almacena las fotos que se obtienen de la API
   fotos: any[] = [];
 
-  constructor(private nounPexelsService: NounPexelsService) {}
+  constructor(private pexelsService: PexelsServiceService) { }
 
   obtenerImagenes() {
     const query = this.myControl.value;
     if (query) {
-      this.nounPexelsService.getImages(query).subscribe(
+      this.pexelsService.getImages(query).subscribe(
         (data: any) => {
-          this.fotos = data;
+          this.fotos = data.photos;
           console.log(this.fotos);
         },
         (error) => {
@@ -27,7 +31,5 @@ export class BuscadorComponent {
       );
     }
   }
-  onEnter() {
-    this.obtenerImagenes();
-  }
+
 }
