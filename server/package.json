@@ -1,0 +1,32 @@
+{
+  "name": "server-axolotl",
+  "version": "1.1.1",
+  "description": "Se programarán las rutas y peticiones HTTP hacia el API de pexels, asi como también se estarán colocando los modelos de IA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "IA",
+    "TensorflowJS",
+    "Angular",
+    "Stack",
+    "MEAN",
+    "buscador",
+    "inteligente",
+    "análisis",
+    "de",
+    "semántica",
+    "en",
+    "imágenes",
+    "y",
+    "texto",
+    "PNL"
+  ],
+  "author": "Will,Mau,Sergio,Fer and Rene",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+}
