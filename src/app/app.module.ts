@@ -35,9 +35,6 @@ import { MatChipsModule } from '@angular/material/chips';
  * Services
 **/
 import { HttpClientModule } from '@angular/common/http';
-import { Ejemplo1Component } from './componentes/ejemplo1/ejemplo1.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,8 +43,7 @@ import { Ejemplo1Component } from './componentes/ejemplo1/ejemplo1.component';
     FooterComponent,
     NavigationComponent,
     BuscadorComponent,
-    ThemeSwitcherComponent,
-    Ejemplo1Component
+    ThemeSwitcherComponent
   ],
   imports: [
     BrowserModule,

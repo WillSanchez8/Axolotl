@@ -6,7 +6,7 @@ import { Component , HostListener} from '@angular/core';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent {
-    contenedor: HTMLElement | null=null;
+   /* contenedor: HTMLElement | null=null;
     @HostListener('window:scroll')
     onWindowScroll() {
       if (this.contenedor) {
@@ -17,5 +17,5 @@ export class BodyComponent {
   
     ngAfterViewInit() {
       this.contenedor = document.querySelector('.contenedor-grecas');
-    }
+    }*/
   }

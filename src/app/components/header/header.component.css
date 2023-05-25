@@ -1,5 +1,18 @@
 .mi-logo{
-  height: 350px;
-  margin-left: 400px;
+  width: 900px;
+  height: 320px;
+  margin-left: 345px;
   display: flex;
+  pointer-events: none;
+}
+
+.qs{
+  width: 200px;
+  height: 20px;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  border: 2px solid #F50087;
+  color: #F50087;
+  background-color: transparent;
 }
