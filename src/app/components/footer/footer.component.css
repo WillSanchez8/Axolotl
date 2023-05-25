@@ -1,13 +1,73 @@
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@400;700&display=swap'); 
 
-/* FOOTER
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.page-footer {
-    font-size: 16px;
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans' sans-serif;
+  }
+  .pie-pagina{
+    width: 100%;
+    background-color: #c02ec0;
+  }
+  .pie-pagina .grupo1{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap:50px;
+    padding: 45px 0px;
+  }
+  .pie-pagina .grupo1 .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .pie-pagina .grupo1 .box figure img{
+    width: 250px;
+  }
+  .pie-pagina .grupo1 .box h3{
+    color:#fff;
+    margin-bottom: 25px;
+    font-size: 20px;
+  }
+  .pie-pagina .grupo1 .box p{
+    color: #efefef;
+    margin-bottom: 10px;
+  }
+  .pie-pagina .grupo1 .red-social a{
+    display: online-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #4b0953;
     text-align: center;
-    padding: 20px;
-    border-top: 1px solid #f2f2f2;
+    transition: all 300ms ease;
   }
+  .pie-pagina .grupo1 .red-social a:hover{
+    color:pink;
+}
+.pie-pagina .grupo2{
+  background-color: rgb(69, 25, 62);
+  padding: 15px 10px;
+  text-align: center;
+  color: #fff;
+}
+.pie-pagina .grupo2 small{
+    font-size: 15px;
+}
+@media screen and(max-width:800px){
+    .pie-pagina .grupo1{
+        width: 90px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 35px 0px;
+    }
+}
   
-  .page-footer span {
-    color: var(--red);
-  }
