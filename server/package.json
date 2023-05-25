@@ -12,7 +12,7 @@
     "TensorflowJS",
     "Angular",
     "Stack",
-    "MEAN",
+    "FEAN",
     "buscador",
     "inteligente",
     "análisis",
@@ -27,10 +27,13 @@
   "author": "Will,Mau,Sergio,Fer and Rene",
   "license": "ISC",
   "dependencies": {
+    "@tensorflow-models/universal-sentence-encoder": "^1.3.3",
+    "@tensorflow/tfjs": "^4.6.0",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "firebase-admin": "^11.8.0",
     "nodemon": "^2.0.22"
   }
 }
