@@ -1,17 +1,4 @@
-
-/* FOOTER
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-/*.page-footer {
-    font-size: 16px;
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid #f2f2f2;
-  }
-  
-  .page-footer span {
-    color: var(--red);
-  }*/
- @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@400;700&isplay=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wgth@400;700&display=swap'); 
 
   *{
     margin: 0;
@@ -28,8 +15,8 @@
     max-width: 1200px;
     margin: auto;
     display:grid;
-    grid-template-columns: repeat(3, 1 fr);
-    grid-gap: 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap:50px;
     padding: 45px 0px;
   }
   .pie-pagina .grupo1 .box figure{
@@ -42,7 +29,7 @@
   .pie-pagina .grupo1 .box figure img{
     width: 250px;
   }
-  .pie-pagina .grupo1 .box h2{
+  .pie-pagina .grupo1 .box h3{
     color:#fff;
     margin-bottom: 25px;
     font-size: 20px;
@@ -66,12 +53,18 @@
   .pie-pagina .grupo1 .red-social a:hover{
     color:pink;
 }
+.pie-pagina .grupo2{
+  background-color: rgb(69, 25, 62);
+  padding: 15px 10px;
+  text-align: center;
+  color: #fff;
+}
 .pie-pagina .grupo2 small{
     font-size: 15px;
 }
-@media  screen and(max-width:800px) {
+@media screen and(max-width:800px){
     .pie-pagina .grupo1{
-        width: 100px;
+        width: 90px;
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 30px;
         padding: 35px 0px;
