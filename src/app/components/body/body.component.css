@@ -1,10 +1,7 @@
-  .contenedor-grecas{
-  width: -800px; /* Ajusta el ancho según tus necesidades */
-  height: -800px; /* Ajusta la altura según tus necesidades */
-  display: flex;
-  justify-content: left;
-  align-items: left;
-  }
+.contenedor-grecas img {
+  pointer-events: none; /* Evita que se pueda arrastrar la imagen */
+}
+
   .g-izq{
     float:left;
     height: 200px;

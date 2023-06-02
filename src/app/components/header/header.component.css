@@ -1,18 +1,57 @@
-.mi-logo{
-  width: 900px;
-  height: 320px;
-  margin-left: 345px;
+.header-container {
   display: flex;
-  pointer-events: none;
+  justify-content: center;
+  align-items: center;
 }
 
-.qs{
-  width: 200px;
-  height: 20px;
-  float: right;
-  margin-top: 20px;
-  margin-right: 20px;
-  border: 2px solid #F50087;
-  color: #F50087;
-  background-color: transparent;
+.logo-container {
+  max-width: 100%;
+  text-align: center;
 }
+
+.mi-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+.no-drag {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+.custom-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #ff00bf; /* Color de fondo */
+  color: #ffffff; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cursor tipo puntero */
+  transition: background-color 0.3s ease-in-out; /* Transición suave */
+  float: right; /* Posicionamiento a la derecha */
+}
+
+.custom-button:hover {
+  background-color: #ff22ae89; /* Cambio de color al pasar el cursor */
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .custom-button {
+    margin-top: 10px;
+    float: none;
+  }
+}
+
+
