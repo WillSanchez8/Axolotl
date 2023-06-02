@@ -1,19 +1,28 @@
   .contenedor-grecas{
-  width: -800px; /* Ajusta el ancho según tus necesidades */
-  height: -800px; /* Ajusta la altura según tus necesidades */
-  display: flex;
+  max-width: 5%;
+  height: auto;
+  /*width: -800px;  Ajusta el ancho según tus necesidades */
+  /*height: -800px; /* Ajusta la altura según tus necesidades */
+  /* display: flex;
   justify-content: left;
-  align-items: left;
+  align-items: left;*/
   }
   .g-izq{
-    float:left;
+    max-width: -10%;
+    height: 200px;
+    float:left
+
+    /*float:left;
     height: 200px;
     margin-top: -880pt;
-    pointer-events: none;
+    pointer-events: none;*/
   }
   .g-izq1{
+    max-width: -10%;
     height: 200px;
-    margin-top: -64.5px;
+    float:left;
     pointer-events: none;
+    margin-top: -80%;
+    margin-left: 4%;
   }
   
