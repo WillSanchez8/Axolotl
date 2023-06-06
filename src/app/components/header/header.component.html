@@ -1,8 +1,6 @@
-<header class="page-header" >
-  <button (click)="onClick" class="qs">¿Quienes somos?</button>
-
-  <div class="contenedor-logo" style="background-color: #FFE0F1;">
-    <nav>  <!-- Alt se utiliza para dar una descripcion de la imagen-->
-        <img src="assets/logos/logo.png" alt="Axolot" class="mi-logo"> 
-    </nav> <!-- Class es un identificador para darle estructura dentro del css-->
+<div class="header-container">
+  <div class="logo-container">
+    <img src="assets/logos/logo.png" alt="Axolot" class="mi-logo no-drag" id="logo">
   </div>
+  <button (click)="onClick" class="btn btn-primary qs custom-button">¿Quiénes somos?</button>
+</div>
