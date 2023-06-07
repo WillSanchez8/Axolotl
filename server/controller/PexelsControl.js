@@ -1,4 +1,15 @@
 const axios = require('axios');
+const { Translate } = require('@google-cloud/translate').v2;
+const vision = require('@google-cloud/vision');
+
+const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+
+const translate = new Translate({
+  credentials: CREDENTIALS,
+  projectId: CREDENTIALS.project_id,
+});
+
+const visionClient = new vision.ImageAnnotatorClient();
 
 async function getPexelsImages(req, res) {
   try {
@@ -24,16 +35,11 @@ async function getPexelsImages(req, res) {
 }
 
 async function translateText(text, targetLanguage) {
-  try {
-    const response = await axios.post(
-      `https://translation.googleapis.com/v3beta1/projects/axolotl-tescha:translateText?key=${process.env.GOOGLE_TRANSLATE_API_KEY}`,
-      {
-        contents: [text],
-        targetLanguageCode: targetLanguage,
-      }
-    );
-    return response.data.translations[0].translatedText;
-  } catch (error) {
+  try{
+    let [translations] = await translate.translate(text, targetLanguage);
+    translations = Array.isArray(translations) ? translations : [translations];
+    return translations[0];
+  }catch(error){
     console.error(error);
     return null;
   }
