@@ -11,14 +11,25 @@
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </form>
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary" (click)="buscarConIA()">
     Búsqueda IA<br />
     <mat-icon>highlight</mat-icon>
-  </button>
+  </button>  
 </div>
+
+<mat-chip-list>
+  <mat-chip
+    *ngFor="let etiqueta of etiquetas"
+    [selectable]="true"
+    [(ngModel)]="etiqueta.seleccionada"
+  >
+    {{ etiqueta.espanol }}
+  </mat-chip>
+</mat-chip-list>
 
 <div class="image-container">
   <div class="image-item" *ngFor="let foto of fotos">
     <img [src]="foto.src.medium" alt="Imagen" />
   </div>
 </div>
+

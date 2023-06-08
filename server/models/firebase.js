@@ -1,25 +1,26 @@
-const {initializeApp, applicationDefault} = require('firebase-admin/app');
-const admin = require('firebase-admin');
-
-initializeApp({
-    credential: applicationDefault(),
-})
+const admin = require("firebase-admin");
+const { analyzeImage } = require("../controller/imageAnalisis");
 
 const db = admin.firestore();
 
-async function storageImages(imageUrl, labels) {
-    try{
-        const docRef = db.collection('images').doc();
-        await docRef.set({
-            imageUrl,
-            labels
-        });
-        return docRef.id;
-    }catch (error){
-        console.log(error);
+async function getLabels(imageUrl) {
+  try {
+    const snapshot = await db
+      .collection("images")
+      .where("imageUrl", "==", imageUrl)
+      .get();
+    if (snapshot.empty) {
+      const labels = await analyzeImage(imageUrl);
+      return labels;
     }
+    const labels = snapshot.docs[0].data().labels;
+    return labels;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }
 
 module.exports = {
-    storageImages,
-}
+  getLabels,
+};

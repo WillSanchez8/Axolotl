@@ -1,7 +1,6 @@
-const axios = require('axios');
-const { Translate } = require('@google-cloud/translate').v2;
-const vision = require('@google-cloud/vision');
-const { storageImages } = require('../models/firebase');
+const axios = require("axios");
+const { Translate } = require("@google-cloud/translate").v2;
+const { getLabels } = require("../models/firebase");
 
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 
@@ -10,13 +9,10 @@ const translate = new Translate({
   projectId: CREDENTIALS.project_id,
 });
 
-const visionClient = new vision.ImageAnnotatorClient();
-
 async function getPexelsImages(req, res) {
   try {
     const query = req.params.query;
-    //translateText recibe dos parámetros el texto a traducir y el idioma al que se quiere traducir
-    const translatedQuery = await translateText(query, 'en');
+    const translatedQuery = await translateText(query, "en");
     const response = await axios.get(
       `https://api.pexels.com/v1/search?query=${translatedQuery}`,
       {
@@ -25,9 +21,47 @@ async function getPexelsImages(req, res) {
         },
       }
     );
-    const images = response.data.photos.map(photo => photo.src.large);
-    const labels = await Promise.all(images.map(image => analyzeImage(image)));
-    res.status(200).json(response.data);
+    const images = response.data.photos.map((photo) => photo.src.large);
+    const labels = await Promise.all(
+      images.map(async (image) => {
+        const englishLabels = await getLabels(image);
+        const spanishLabels = await Promise.all(
+          englishLabels.map((label) => translateText(label, "es"))
+        );
+        return spanishLabels;
+      })
+    );
+    res.status(200).json({ photos: response.data.photos, labels });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error:
+        "Ha ocurrido un error mientras se hacia la solicitud hacia el API Pexels",
+    });
+  }
+}
+
+async function getPexelsImagesWithLabels(req, res) {
+  try {
+    const query = req.query.query;
+    const labels = req.query.labels.split(',');
+    const translatedQuery = await translateText(query, 'en');
+    const translatedLabels = await Promise.all(
+      labels.map((label) => translateText(label, 'en'))
+    );
+    const response = await axios.get(
+      `https://api.pexels.com/v1/search?query=${translatedQuery}&per_page=80`,
+      {
+        headers: {
+          Authorization: process.env.PEXELS_API_KEY,
+        },
+      }
+    );
+    const photos = response.data.photos.filter((photo) => {
+      const englishLabels = getLabels(photo.src.large);
+      return translatedLabels.every((label) => englishLabels.includes(label));
+    });
+    res.status(200).json({ photos });
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -38,27 +72,19 @@ async function getPexelsImages(req, res) {
 }
 
 async function translateText(text, targetLanguage) {
-  try{
+  try {
     let [translations] = await translate.translate(text, targetLanguage);
-    translations = Array.isArray(translations) ? translations : [translations];
+    translations = Array.isArray(translations)
+      ? translations
+      : [translations];
     return translations[0];
-  }catch(error){
+  } catch (error) {
     console.error(error);
     return null;
   }
 }
 
-async function analyzeImage(imageUrl) {
-  try{
-    const [result] = await visionClient.labelDetection(imageUrl);
-    const labels = result.labelAnnotations.map(label => label.description);
-    await storageImages(imageUrl, labels);
-    return labels;
-  }catch(error){
-    console.error(error);
-    return null;
-  }
-}
 module.exports = {
   getPexelsImages,
+  getPexelsImagesWithLabels,
 };
