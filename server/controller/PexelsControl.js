@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { Translate } = require('@google-cloud/translate').v2;
 const vision = require('@google-cloud/vision');
+const { storageImages } = require('../models/firebase');
 
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 
@@ -24,6 +25,8 @@ async function getPexelsImages(req, res) {
         },
       }
     );
+    const images = response.data.photos.map(photo => photo.src.large);
+    const labels = await Promise.all(images.map(image => analyzeImage(image)));
     res.status(200).json(response.data);
   } catch (error) {
     console.error(error);
@@ -45,6 +48,17 @@ async function translateText(text, targetLanguage) {
   }
 }
 
+async function analyzeImage(imageUrl) {
+  try{
+    const [result] = await visionClient.labelDetection(imageUrl);
+    const labels = result.labelAnnotations.map(label => label.description);
+    await storageImages(imageUrl, labels);
+    return labels;
+  }catch(error){
+    console.error(error);
+    return null;
+  }
+}
 module.exports = {
   getPexelsImages,
 };
