@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PexelsServiceService } from '../../services/pexels-service.service';
 import { Etiqueta } from 'src/app/interfaces/etiquetas';
-import {MatChipEditedEvent, MatChipInputEvent, MatChipsModule} from '@angular/material/chips';
-
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -28,9 +26,10 @@ export class BuscadorComponent {
       this.pexelsService.getImages(query).subscribe(
         (data: any) => {
           this.fotos = data.photos;
-          this.etiquetas = data.labels.map((label: any) => ({
-            ingles: label.ingles,
-            espanol: label.espanol,
+          this.etiquetas = data.labels[0].map((label: string) => ({
+            ingles: '',
+            espanol: label,
+            seleccionada: false,
           }));
           console.log(this.fotos);
         },
@@ -40,6 +39,7 @@ export class BuscadorComponent {
       );
     }
   }
+  
   
   buscarConIA() {
     const query = this.myControl.value;

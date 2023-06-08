@@ -17,15 +17,16 @@
   </button>  
 </div>
 
-<mat-chip-list>
-  <mat-chip
+<mat-chip-listbox *ngIf="etiquetas.length > 0">
+  <mat-chip-option
     *ngFor="let etiqueta of etiquetas"
-    [selectable]="true"
-    [(ngModel)]="etiqueta.seleccionada"
+    [value]="etiqueta"
+    [selected]="etiqueta.seleccionada"
+    (click)="etiqueta.seleccionada = !etiqueta.seleccionada"
   >
     {{ etiqueta.espanol }}
-  </mat-chip>
-</mat-chip-list>
+  </mat-chip-option>
+</mat-chip-listbox>
 
 <div class="image-container">
   <div class="image-item" *ngFor="let foto of fotos">
