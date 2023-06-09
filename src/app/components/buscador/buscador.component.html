@@ -1,36 +1,33 @@
-<div class="center-content" >
-  <form class="example-form">
-    <mat-form-field class="width" (keydown.enter)="obtenerImagenes()">
-      <input
-        type="text"
-        placeholder="¿Quieres saber como funciona Axolotl? Da click en el botón búsqueda IA"
-        aria-label="Buscar"
-        matInput
-        [formControl]="myControl"
-      />
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-  </form>
-  <button mat-raised-button color="primary" (click)="buscarConIA()">
-    Búsqueda IA<br />
-    <mat-icon>highlight</mat-icon>
-  </button>  
-</div>
+<div class="main-container" [class.blur]="isDialogOpen">
+  <div class="center-content">
+    <form class="example-form">
+      <mat-form-field class="width" (keydown.enter)="obtenerImagenes()">
+        <input
+          type="text"
+          placeholder="¿Quieres saber como funciona Axolotl? Da click en el botón búsqueda IA"
+          aria-label="Buscar"
+          matInput
+          [formControl]="myControl"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </form>
+  </div>
 
-<mat-chip-listbox *ngIf="etiquetas.length > 0">
-  <mat-chip-option
-    *ngFor="let etiqueta of etiquetas"
-    [value]="etiqueta"
-    [selected]="etiqueta.seleccionada"
-    (click)="etiqueta.seleccionada = !etiqueta.seleccionada"
-  >
-    {{ etiqueta.espanol }}
-  </mat-chip-option>
-</mat-chip-listbox>
+  <mat-chip-listbox *ngIf="etiquetas.length > 0">
+    <mat-chip-option
+      *ngFor="let etiqueta of etiquetas"
+      [value]="etiqueta"
+      [selected]="etiqueta.seleccionada"
+      (click)="buscarPorEtiqueta(etiqueta.espanol)"
+    >
+      {{ etiqueta.espanol }}
+    </mat-chip-option>
+  </mat-chip-listbox>
 
-<div class="image-container">
-  <div class="image-item" *ngFor="let foto of fotos">
-    <img [src]="foto.src.medium" alt="Imagen" />
+  <div class="image-container">
+    <div class="image-item" *ngFor="let foto of fotos; let i = index">
+      <img [src]="foto.src.medium" alt="Imagen" (click)="verImagen(i)" />
+    </div>
   </div>
 </div>
-

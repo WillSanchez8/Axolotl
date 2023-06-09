@@ -1,0 +1,50 @@
+:host {
+  .mat-dialog-container {
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+
+  .image-container {
+    position: relative;
+
+    .close-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+
+    .navigation-button {
+      position: absolute;
+      top: calc(50% - 24px);
+
+      &.previous {
+        left: 8px;
+      }
+
+      &.next {
+        right: 8px;
+      }
+    }
+  }
+
+  .navigation-button {
+    color: white;
+  }
+
+  .navigation-button:hover,
+  .close-button:hover {
+    color: #d29bfd;
+  }
+  
+  .navigation-button.clicked {
+    background-color: pink;
+  }
+
+  .close-button {
+    color: white;
+  }
+
+  .close-button.clicked {
+    background-color: pink;
+  }
+}

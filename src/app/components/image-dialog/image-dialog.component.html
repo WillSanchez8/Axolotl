@@ -1,0 +1,27 @@
+<div class="image-container">
+  <button
+    mat-icon-button
+    class="close-button"
+    [class.clicked]="isCloseClicked"
+    (click)="onClose()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="navigation-button previous"
+    [class.clicked]="isPreviousClicked"
+    (click)="onPrevious()"
+  >
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <img [src]="data.url" alt="Imagen" />
+  <button
+    mat-icon-button
+    class="navigation-button next"
+    [class.clicked]="isNextClicked"
+    (click)="onNext()"
+  >
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

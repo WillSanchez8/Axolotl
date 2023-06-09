@@ -30,11 +30,13 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 
 /**
  * Services
 **/
 import { HttpClientModule } from '@angular/common/http';
+import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     NavigationComponent,
     BuscadorComponent,
-    ThemeSwitcherComponent
+    ThemeSwitcherComponent,
+    ImageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatDividerModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

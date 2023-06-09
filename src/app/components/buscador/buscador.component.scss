@@ -26,6 +26,6 @@
   width: 680px;
 }
 
-button {
-  border-radius: 90px;
+.main-container.blur {
+  filter: blur(5px);
 }

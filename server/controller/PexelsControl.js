@@ -41,36 +41,6 @@ async function getPexelsImages(req, res) {
   }
 }
 
-async function getPexelsImagesWithLabels(req, res) {
-  try {
-    const query = req.query.query;
-    const labels = req.query.labels.split(',');
-    const translatedQuery = await translateText(query, 'en');
-    const translatedLabels = await Promise.all(
-      labels.map((label) => translateText(label, 'en'))
-    );
-    const response = await axios.get(
-      `https://api.pexels.com/v1/search?query=${translatedQuery}&per_page=80`,
-      {
-        headers: {
-          Authorization: process.env.PEXELS_API_KEY,
-        },
-      }
-    );
-    const photos = response.data.photos.filter((photo) => {
-      const englishLabels = getLabels(photo.src.large);
-      return translatedLabels.every((label) => englishLabels.includes(label));
-    });
-    res.status(200).json({ photos });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error:
-        'Ha ocurrido un error mientras se hacia la solicitud hacia el API Pexels',
-    });
-  }
-}
-
 async function translateText(text, targetLanguage) {
   try {
     let [translations] = await translate.translate(text, targetLanguage);
@@ -85,6 +55,5 @@ async function translateText(text, targetLanguage) {
 }
 
 module.exports = {
-  getPexelsImages,
-  getPexelsImagesWithLabels,
+  getPexelsImages
 };
