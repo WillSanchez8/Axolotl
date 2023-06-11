@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PexelsServiceService } from '../../services/pexels-service.service';
 import { Etiqueta } from 'src/app/interfaces/etiquetas';
-import { MatDialog } from '@angular/material/dialog';
-import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 import { Observable, map, startWith } from 'rxjs';
 
 @Component({
@@ -22,6 +20,8 @@ export class BuscadorComponent implements OnInit {
   fotos: any[] = [];
 
   isDialogOpen = false;
+
+  @Output() actualizarFotos = new EventEmitter<any[]>();
 
   palabras: string[] = [
     'naturaleza',
@@ -47,7 +47,6 @@ export class BuscadorComponent implements OnInit {
 
   constructor(
     private pexelsService: PexelsServiceService,
-    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -119,6 +118,8 @@ export class BuscadorComponent implements OnInit {
           if (!this.palabras.includes(query)) {
             this.palabras.push(query);
           }
+          // Emitir evento con las nuevas imágenes
+          this.actualizarFotos.emit(this.fotos);
         },
         (error) => {
           console.log(error);
@@ -142,15 +143,5 @@ export class BuscadorComponent implements OnInit {
         console.log(error);
       }
     );
-  }
-
-  verImagen(index: number) {
-    const dialogRef = this.dialog.open(ImageDialogComponent, {
-      data: { url: this.fotos[index].src.large, index, images: this.fotos },
-    });
-    this.isDialogOpen = true;
-    dialogRef.afterClosed().subscribe(() => {
-      this.isDialogOpen = false;
-    });
   }
 }

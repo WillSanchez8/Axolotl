@@ -1,26 +1,30 @@
-<!--Agregando grecas-->
-<mat-card class="contenedor-grecas" style="background-color: black;">
-    <nav>
-      <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq">
-    </nav>
-    <nav>
-      <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1">
-    </nav>
-    <nav>
-      <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1">
-    </nav>
-    <nav>
-      <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1">
-    </nav>
-    <nav>
-      <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1">
-    </nav>
-    <nav>
-      <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1">
-    </nav>
-    <nav>
-      <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1">
-    </nav>
+<mat-card class="contenedor-grecas" style="background-color: black">
+  <nav>
+    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq" />
+  </nav>
+  <nav>
+    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
+  </nav>
+  <nav>
+    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
+  </nav>
+  <nav>
+    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
+  </nav>
+  <nav>
+    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
+  </nav>
+  <nav>
+    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
+  </nav>
+  <nav>
+    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
+  </nav>
+  
 </mat-card>
 
-
+<div class="image-container">
+  <div class="image-item" *ngFor="let foto of fotos; let i = index">
+    <img [src]="foto.src.medium" alt="Imagen" (click)="verImagen(i)" />
+  </div>
+</div>
