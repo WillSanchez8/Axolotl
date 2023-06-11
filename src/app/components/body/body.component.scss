@@ -1,14 +1,29 @@
-.contenedor-grecas {
-  float: left;
+.main-container {
+  position: relative;
 }
 
-.contenedor-grecas img {
-  pointer-events: none;
+.greca-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: url(/assets/grecas/gmizqui.png);
+  background-repeat: repeat;
+  background-size: 50px;
+  filter: blur(5px);
 }
 
 .image-container {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+  background-image: url(/assets/grecas/gmizqui.png);
+  background-repeat: repeat;
+  background-size: 50px;
+  
 }
 
 .image-item {
@@ -20,15 +35,14 @@
   width: 100%;
   height: auto;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: transform .2s;
 }
 
 .image-item img:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .main-container.blur {
-  filter: blur(5px);
+    filter: blur(5px);
 }
-

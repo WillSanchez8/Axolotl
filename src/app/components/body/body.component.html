@@ -1,30 +1,8 @@
-<mat-card class="contenedor-grecas">
-  <nav>
-    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq" />
-  </nav>
-  <nav>
-    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
-  </nav>
-  <nav>
-    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
-  </nav>
-  <nav>
-    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
-  </nav>
-  <nav>
-    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
-  </nav>
-  <nav>
-    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
-  </nav>
-  <nav>
-    <img src="assets/grecas/gmizqui.png" alt="Axolot" class="g-izq1" />
-  </nav>
-  
-</mat-card>
-<!--PRUEBA DE IMAGENES-->
-<div class="image-container">
-  <div class="image-item" *ngFor="let foto of fotos; let i = index">
-    <img [src]="foto.src.medium" alt="Imagen" (click)="verImagen(i)" />
+<div class="main-container" [class.blur]="isDialogOpen">
+  <div class="greca-container"></div>
+  <div class="image-container">
+    <div class="image-item" *ngFor="let foto of fotos; let i = index">
+      <img [src]="foto.src.medium" alt="Imagen" (click)="verImagen(i)" />
+    </div>
   </div>
 </div>
