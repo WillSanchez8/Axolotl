@@ -34,9 +34,16 @@ export class BuscadorComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
 
   generarTerminoAleatorio(): string {
-    const index = Math.floor(Math.random() * this.palabras.length);
-    return this.palabras[index];
+    let palabraAleatoria = '';
+    const palabrasGeneradas: string[] = [];
+    do {
+      const index = Math.floor(Math.random() * this.palabras.length);
+      palabraAleatoria = this.palabras[index];
+    } while (palabrasGeneradas.includes(palabraAleatoria));
+    palabrasGeneradas.push(palabraAleatoria);
+    return palabraAleatoria;
   }
+  
 
   constructor(
     private pexelsService: PexelsServiceService,
@@ -44,7 +51,23 @@ export class BuscadorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.obtenerImagenesAleatorias();
+    this.obtenerConsultas();
+    this.actualizarOpcionesAutocompletado();
+  }
+  
+  actualizarOpcionesAutocompletado() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      map(value => this._filter(value || ''))
+    );
+  }
+    
+  
+  obtenerImagenesAleatorias() {
     this.obtenerImagenes(this.generarTerminoAleatorio());
+  }
+  
+  obtenerConsultas() {
     this.pexelsService.getQueries().subscribe((queries) => {
       const queriesUnicas = queries.filter((valor, indice) => {
         return queries.indexOf(valor) === indice;
@@ -62,10 +85,10 @@ export class BuscadorComponent implements OnInit {
       return this.palabras;
     }
     const filterValue = value.toLowerCase();
-    return this.palabras.filter((option) =>
-      option.toLowerCase().includes(filterValue)
+    return this.palabras.filter((option, index) =>
+      option.toLowerCase().includes(filterValue) && this.palabras.indexOf(option) === index
     );
-  }
+  }  
 
   selectFirstOption(event: Event) {
     event.preventDefault();

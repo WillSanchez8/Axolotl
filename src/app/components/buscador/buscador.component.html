@@ -1,34 +1,24 @@
 <div class="main-container" [class.blur]="isDialogOpen">
   <div class="center-content">
     <form class="example-form">
-      <mat-form-field class="width" (keydown.enter)="obtenerImagenes()">
-        <input
-        type="text"
-        placeholder="¿Quieres saber como funciona Axolotl? Empieza a escribir y presiona enter"
-        aria-label="Buscar"
-        matInput
-        [formControl]="myControl"
-        [matAutocomplete]="auto"
-        (keydown.tab)="selectFirstOption($event)"
-      />
-      <mat-icon matSuffix>search</mat-icon>
-      <mat-hint>Presiona tabulador para autocompletar</mat-hint>
+      <mat-form-field class="width">
+        <input type="text" placeholder="¿Quieres saber como funciona Axolotl? Empieza a escribir y presiona enter"
+          aria-label="Buscar" matInput [formControl]="myControl" [matAutocomplete]="auto"
+          (keydown.tab)="selectFirstOption($event)" (keydown.enter)="obtenerImagenes()" />
+        <mat-icon matSuffix>search</mat-icon>
+        <mat-hint>Presiona tabulador para autocompletar</mat-hint>
         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
           <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
             {{option}}
           </mat-option>
-        </mat-autocomplete>        
+        </mat-autocomplete>
       </mat-form-field>
     </form>
   </div>
 
   <mat-chip-listbox *ngIf="etiquetas.length > 0">
-    <mat-chip-option
-      *ngFor="let etiqueta of etiquetas"
-      [value]="etiqueta"
-      [selected]="etiqueta.seleccionada"
-      (click)="buscarPorEtiqueta(etiqueta.espanol)"
-    >
+    <mat-chip-option *ngFor="let etiqueta of etiquetas" [value]="etiqueta" [selected]="etiqueta.seleccionada"
+      (click)="buscarPorEtiqueta(etiqueta.espanol)">
       {{ etiqueta.espanol }}
     </mat-chip-option>
   </mat-chip-listbox>
