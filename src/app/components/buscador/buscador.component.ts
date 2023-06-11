@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PexelsServiceService } from '../../services/pexels-service.service';
 import { Etiqueta } from 'src/app/interfaces/etiquetas';
@@ -9,7 +9,7 @@ import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
   templateUrl: './buscador.component.html',
   styleUrls: ['./buscador.component.scss'],
 })
-export class BuscadorComponent {
+export class BuscadorComponent implements OnInit{
   //myControl permite obtener el valor del input
   myControl = new FormControl('');
 
@@ -31,10 +31,11 @@ export class BuscadorComponent {
   constructor(
     private pexelsService: PexelsServiceService,
     public dialog: MatDialog
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.obtenerImagenes(this.generarTerminoAleatorio());
   }
-
   
   obtenerImagenes(query: string | null = this.myControl.value) {
     if (query) {
