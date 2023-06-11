@@ -77,7 +77,7 @@ export class BuscadorComponent implements OnInit {
         map(value => this._filter(value || '')),
       );
     });
-  }
+  }  
   
   private _filter(value: string): string[] {
     if (!value) {
