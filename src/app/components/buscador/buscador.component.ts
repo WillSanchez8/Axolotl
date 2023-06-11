@@ -20,14 +20,23 @@ export class BuscadorComponent {
   fotos: any[] = [];
 
   isDialogOpen = false;
+  
+  palabras:string[] = ['naturaleza', 'ciudad', 'animales', 'comida', 'viajes'];
+
+  generarTerminoAleatorio(): string {
+    const index = Math.floor(Math.random() * this.palabras.length);
+    return this.palabras[index];
+  }
 
   constructor(
     private pexelsService: PexelsServiceService,
     public dialog: MatDialog
-  ) {}
+  ) {
+    this.obtenerImagenes(this.generarTerminoAleatorio());
+  }
 
-  obtenerImagenes() {
-    const query = this.myControl.value;
+  
+  obtenerImagenes(query: string | null = this.myControl.value) {
     if (query) {
       this.pexelsService.getImages(query).subscribe(
         (data: any) => {
@@ -44,7 +53,7 @@ export class BuscadorComponent {
         }
       );
     }
-  }
+  } 
 
   buscarPorEtiqueta(etiqueta: string) {
     this.pexelsService.getImages(etiqueta).subscribe(
