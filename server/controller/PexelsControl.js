@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { Translate } = require("@google-cloud/translate").v2;
 const { getLabels } = require("../models/firebase");
+const { storeUserQuery } = require("../controller/imageAnalisis");
 
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 
@@ -12,6 +13,7 @@ const translate = new Translate({
 async function getPexelsImages(req, res) {
   try {
     const query = req.params.query;
+    await storeUserQuery(query);
     const translatedQuery = await translateText(query, "en");
     const response = await axios.get(
       `https://api.pexels.com/v1/search?query=${translatedQuery}`,

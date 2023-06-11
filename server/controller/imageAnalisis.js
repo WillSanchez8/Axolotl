@@ -34,7 +34,27 @@ async function storageImages(imageUrl, labels) {
   }
 }
 
+async function storeUserQuery(query) {
+  try {
+    const snapshot = await db
+      .collection("userQueries")
+      .where("query", "==", query)
+      .get();
+    if (snapshot.empty) {
+      const docRef = db.collection("userQueries").doc();
+      await docRef.set({
+        query,
+      });
+      return docRef.id;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+
 module.exports = {
   analyzeImage,
   storageImages,
+  storeUserQuery,
 };
