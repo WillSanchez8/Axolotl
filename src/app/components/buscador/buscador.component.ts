@@ -21,7 +21,7 @@ export class BuscadorComponent implements OnInit{
 
   isDialogOpen = false;
   
-  palabras:string[] = ['naturaleza', 'ciudad', 'animales', 'comida', 'viajes'];
+  palabras:string[] = ['naturaleza', 'ciudad', 'animales', 'comida', 'viajes', 'deportes'];
 
   generarTerminoAleatorio(): string {
     const index = Math.floor(Math.random() * this.palabras.length);
