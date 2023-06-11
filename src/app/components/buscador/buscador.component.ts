@@ -138,6 +138,8 @@ export class BuscadorComponent implements OnInit {
           seleccionada: false,
         }));
         console.log(this.fotos);
+        // Emitir evento con las nuevas imágenes
+        this.actualizarFotos.emit(this.fotos);
       },
       (error) => {
         console.log(error);
