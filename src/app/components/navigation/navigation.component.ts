@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
+  fotos: any[] = [];
 
+  actualizarFotos(fotos: any[]) {
+    this.fotos = fotos;
+  }
 }

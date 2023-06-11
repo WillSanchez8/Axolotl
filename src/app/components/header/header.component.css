@@ -22,7 +22,6 @@
   user-select: none;
 }
 
-
 .custom-button {
   position: absolute;
   top: 20px;
@@ -42,16 +41,46 @@
   background-color: #ff22ae89; /* Cambio de color al pasar el cursor */
 }
 
+app-theme-switcher {
+  position: absolute;
+  top: 120px;
+  right: 20px;
+}
+
 @media (max-width: 768px) {
   .header-container {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .custom-button {
     margin-top: 10px;
     float: none;
   }
+
+  app-theme-switcher {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 10px;
+  }
 }
 
+@media (min-width: 769px) and (max-width: 1199px) {
+  .header-container {
+    flex-direction: row;
+    text-align: left;
+  }
 
+  .custom-button {
+    margin-top: 0;
+    float: right;
+  }
+
+  app-theme-switcher {
+    position: absolute;
+    top: 120px;
+    right: 20px;
+    margin-top: 0;
+  }
+}

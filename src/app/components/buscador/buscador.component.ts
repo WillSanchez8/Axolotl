@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PexelsServiceService } from '../../services/pexels-service.service';
 import { Etiqueta } from 'src/app/interfaces/etiquetas';
-import { MatDialog } from '@angular/material/dialog';
-import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 import { Observable, map, startWith } from 'rxjs';
 
 @Component({
@@ -23,6 +21,8 @@ export class BuscadorComponent implements OnInit {
 
   isDialogOpen = false;
 
+  @Output() actualizarFotos = new EventEmitter<any[]>();
+
   palabras: string[] = [
     'naturaleza',
     'ciudad',
@@ -34,17 +34,39 @@ export class BuscadorComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
 
   generarTerminoAleatorio(): string {
-    const index = Math.floor(Math.random() * this.palabras.length);
-    return this.palabras[index];
+    let palabraAleatoria = '';
+    const palabrasGeneradas: string[] = [];
+    do {
+      const index = Math.floor(Math.random() * this.palabras.length);
+      palabraAleatoria = this.palabras[index];
+    } while (palabrasGeneradas.includes(palabraAleatoria));
+    palabrasGeneradas.push(palabraAleatoria);
+    return palabraAleatoria;
   }
+  
 
   constructor(
     private pexelsService: PexelsServiceService,
-    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.obtenerImagenesAleatorias();
+    this.obtenerConsultas();
+    this.actualizarOpcionesAutocompletado();
+  }
+  
+  actualizarOpcionesAutocompletado() {
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      map(value => this._filter(value || ''))
+    );
+  }
+    
+  
+  obtenerImagenesAleatorias() {
     this.obtenerImagenes(this.generarTerminoAleatorio());
+  }
+  
+  obtenerConsultas() {
     this.pexelsService.getQueries().subscribe((queries) => {
       const queriesUnicas = queries.filter((valor, indice) => {
         return queries.indexOf(valor) === indice;
@@ -62,10 +84,10 @@ export class BuscadorComponent implements OnInit {
       return this.palabras;
     }
     const filterValue = value.toLowerCase();
-    return this.palabras.filter((option) =>
-      option.toLowerCase().includes(filterValue)
+    return this.palabras.filter((option, index) =>
+      option.toLowerCase().includes(filterValue) && this.palabras.indexOf(option) === index
     );
-  }
+  }  
 
   selectFirstOption(event: Event) {
     event.preventDefault();
@@ -96,6 +118,8 @@ export class BuscadorComponent implements OnInit {
           if (!this.palabras.includes(query)) {
             this.palabras.push(query);
           }
+          // Emitir evento con las nuevas imágenes
+          this.actualizarFotos.emit(this.fotos);
         },
         (error) => {
           console.log(error);
@@ -114,20 +138,12 @@ export class BuscadorComponent implements OnInit {
           seleccionada: false,
         }));
         console.log(this.fotos);
+        // Emitir evento con las nuevas imágenes
+        this.actualizarFotos.emit(this.fotos);
       },
       (error) => {
         console.log(error);
       }
     );
-  }
-
-  verImagen(index: number) {
-    const dialogRef = this.dialog.open(ImageDialogComponent, {
-      data: { url: this.fotos[index].src.large, index, images: this.fotos },
-    });
-    this.isDialogOpen = true;
-    dialogRef.afterClosed().subscribe(() => {
-      this.isDialogOpen = false;
-    });
   }
 }
