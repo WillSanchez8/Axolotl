@@ -46,13 +46,16 @@ export class BuscadorComponent implements OnInit {
   ngOnInit() {
     this.obtenerImagenes(this.generarTerminoAleatorio());
     this.pexelsService.getQueries().subscribe((queries) => {
-      this.palabras = [...this.palabras, ...queries];
+      const queriesUnicas = queries.filter((valor, indice) => {
+        return queries.indexOf(valor) === indice;
+      });
+      this.palabras = [...this.palabras, ...queriesUnicas];
       this.filteredOptions = this.myControl.valueChanges.pipe(
         startWith(''),
         map(value => this._filter(value || '')),
       );
     });
-  }
+  }  
   
   private _filter(value: string): string[] {
     if (!value) {
