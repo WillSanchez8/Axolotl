@@ -90,14 +90,16 @@ export class BuscadorComponent implements OnInit {
             seleccionada: false,
           }));
           console.log(this.fotos);
-          this.palabras = [...this.palabras, query];
+          if (!this.palabras.includes(query)) {
+            this.palabras.push(query);
+          }
         },
         (error) => {
           console.log(error);
         }
       );
     }
-  } 
+  }  
 
   buscarPorEtiqueta(etiqueta: string) {
     this.pexelsService.getImages(etiqueta).subscribe(
