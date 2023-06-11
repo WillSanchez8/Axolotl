@@ -12,4 +12,8 @@ export class PexelsServiceService {
   getImages(query: string) {
     return this.http.get(`${this.apiUrl}/api/pexels/${query}`);
   }
+
+  getQueries() {
+    return this.http.get<string[]>(`${this.apiUrl}/api/user-queries`);
+  }
 }

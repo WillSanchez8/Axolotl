@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { PexelsServiceService } from '../../services/pexels-service.service';
 import { Etiqueta } from 'src/app/interfaces/etiquetas';
@@ -11,7 +11,7 @@ import { Observable, map, startWith } from 'rxjs';
   templateUrl: './buscador.component.html',
   styleUrls: ['./buscador.component.scss'],
 })
-export class BuscadorComponent implements OnInit{
+export class BuscadorComponent implements OnInit {
   //myControl permite obtener el valor del input
   myControl = new FormControl('');
 
@@ -22,8 +22,15 @@ export class BuscadorComponent implements OnInit{
   fotos: any[] = [];
 
   isDialogOpen = false;
-  
-  palabras:string[] = ['naturaleza', 'ciudad', 'animales', 'comida', 'viajes', 'deportes'];
+
+  palabras: string[] = [
+    'naturaleza',
+    'ciudad',
+    'animales',
+    'comida',
+    'viajes',
+    'deportes',
+  ];
   filteredOptions!: Observable<string[]>;
 
   generarTerminoAleatorio(): string {
@@ -38,35 +45,40 @@ export class BuscadorComponent implements OnInit{
 
   ngOnInit() {
     this.obtenerImagenes(this.generarTerminoAleatorio());
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value || '')),
-    );
+    this.pexelsService.getQueries().subscribe((queries) => {
+      this.palabras = [...this.palabras, ...queries];
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value || '')),
+      );
+    });
   }
-
+  
   private _filter(value: string): string[] {
     if (!value) {
       return this.palabras;
     }
     const filterValue = value.toLowerCase();
-    return this.palabras.filter(option => option.toLowerCase().includes(filterValue));
+    return this.palabras.filter((option) =>
+      option.toLowerCase().includes(filterValue)
+    );
   }
-  
-  
+
   selectFirstOption(event: Event) {
     event.preventDefault();
-    this.filteredOptions.subscribe(options => {
+    this.filteredOptions.subscribe((options) => {
       const inputValue = this.myControl.value;
       if (inputValue) {
-        const bestMatch = options.find(option => option.startsWith(inputValue));
+        const bestMatch = options.find((option) =>
+          option.startsWith(inputValue)
+        );
         if (bestMatch) {
           this.myControl.setValue(bestMatch);
         }
       }
     });
   }
-    
-  
+
   obtenerImagenes(query: string | null = this.myControl.value) {
     if (query) {
       this.pexelsService.getImages(query).subscribe(
@@ -78,6 +90,7 @@ export class BuscadorComponent implements OnInit{
             seleccionada: false,
           }));
           console.log(this.fotos);
+          this.palabras = [...this.palabras, query];
         },
         (error) => {
           console.log(error);
@@ -112,5 +125,4 @@ export class BuscadorComponent implements OnInit{
       this.isDialogOpen = false;
     });
   }
-  
 }
