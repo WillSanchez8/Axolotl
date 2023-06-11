@@ -31,7 +31,6 @@ async function getUserQueries() {
     return null;
   }
 }
-
 module.exports = {
   getLabels,
   getUserQueries,

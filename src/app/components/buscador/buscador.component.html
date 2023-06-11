@@ -3,13 +3,21 @@
     <form class="example-form">
       <mat-form-field class="width" (keydown.enter)="obtenerImagenes()">
         <input
-          type="text"
-          placeholder="¿Quieres saber como funciona Axolotl? Empieza a escribir y presiona enter"
-          aria-label="Buscar"
-          matInput
-          [formControl]="myControl"
-        />
-        <mat-icon matSuffix>search</mat-icon>
+        type="text"
+        placeholder="¿Quieres saber como funciona Axolotl? Empieza a escribir y presiona enter"
+        aria-label="Buscar"
+        matInput
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+        (keydown.tab)="selectFirstOption($event)"
+      />
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint>Presiona tabulador para autocompletar</mat-hint>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>        
       </mat-form-field>
     </form>
   </div>
