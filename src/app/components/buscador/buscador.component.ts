@@ -50,7 +50,7 @@ export class BuscadorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.obtenerImagenesAleatorias();
+    //this.obtenerImagenesAleatorias();
     this.obtenerConsultas();
     this.actualizarOpcionesAutocompletado();
   }

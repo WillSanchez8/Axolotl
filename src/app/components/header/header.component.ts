@@ -7,10 +7,6 @@ import 'bootstrap';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements AfterViewInit {
-  onClick() {
-    console.log('Botón presionado prueba');
-  }
-
   constructor(private elementRef: ElementRef) {}
 
   ngAfterViewInit() {
