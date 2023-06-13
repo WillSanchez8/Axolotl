@@ -21,6 +21,17 @@ async function getLabels(imageUrl) {
   }
 }
 
+async function getUserQueries() {
+  try {
+    const snapshot = await db.collection("userQueries").get();
+    const queries = snapshot.docs.map((doc) => doc.data().query);
+    return queries;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
 module.exports = {
   getLabels,
+  getUserQueries,
 };

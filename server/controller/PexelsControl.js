@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { Translate } = require("@google-cloud/translate").v2;
-const { getLabels } = require("../models/firebase");
+const { storeUserQuery } = require("../controller/imageAnalisis");
+const { getUserQueries, getLabels } = require("../models/firebase");
 
 const CREDENTIALS = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 
@@ -12,6 +13,7 @@ const translate = new Translate({
 async function getPexelsImages(req, res) {
   try {
     const query = req.params.query;
+    await storeUserQuery(query);
     const translatedQuery = await translateText(query, "en");
     const response = await axios.get(
       `https://api.pexels.com/v1/search?query=${translatedQuery}`,
@@ -54,6 +56,19 @@ async function translateText(text, targetLanguage) {
   }
 }
 
+async function getUserQueries2(req, res) {
+  try {
+    const queries = await getUserQueries();
+    res.status(200).json(queries);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Ha ocurrido un error mientras se obtenían las consultas previas del usuario",
+    });
+  }
+}
+
 module.exports = {
-  getPexelsImages
+  getPexelsImages,
+  getUserQueries2,
 };

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, HostListener } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -16,6 +16,15 @@ export class ImageDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: { url: string, index: number, images: any[] },
     public dialogRef: MatDialogRef<ImageDialogComponent>
   ) {}
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') {
+      this.onPrevious();
+    } else if (event.key === 'ArrowRight') {
+      this.onNext();
+    }
+  }
 
   onPrevious() {
     if (this.data.index > 0) {
