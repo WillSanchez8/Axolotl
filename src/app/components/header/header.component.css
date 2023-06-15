@@ -6,7 +6,6 @@
 
 .logo-container {
   max-width: 100%;
-  text-align: center;
 }
 
 .mi-logo {
@@ -24,18 +23,27 @@
 
 .custom-button {
   position: absolute;
+  padding: 10px 20px;
+  font-size: 16px;
   top: 20px;
   right: 20px;
-  background-color: #ff00bf; /* Color de fondo */
+  background-color: #ff00bf; /* Color de fondo*/
   color: #ffffff; /* Color del texto */
   border: none; /* Sin borde */
   border-radius: 5px; /* Bordes redondeados */
   padding: 10px 20px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño de fuente */
-  cursor: pointer; /* Cursor tipo puntero */
+  font-size: 10px; /* Tamaño de fuente */
   transition: background-color 0.3s ease-in-out; /* Transición suave */
   float: right; /* Posicionamiento a la derecha */
 }
+@media screen and (max-width:600px){
+  .custom-button{
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+}
+
 
 .custom-button:hover {
   background-color: #ff22ae89; /* Cambio de color al pasar el cursor */
