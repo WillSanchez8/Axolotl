@@ -6,10 +6,17 @@ pregunta.forEach((pregunta)=>{
         const respuesta= pregunta.querySelector('.respuesta');
         const alturaRealRespuesta = respuesta.scrollHeight;
 
-        if(respuesta.style.maxHeight){
-            console.log('No esta vacia')
+        if(!respuesta.style.maxHeight){
+            respuesta.style.maxHeight=alturaRealRespuesta+'px';
         }else{
-            console.log('esta vacia')
+            respuesta.style.maxHeight=null;
         }
-    })
+//reinicio
+        pregunta.forEach((elemento)=>{
+            if(pregunta!==elemento){
+                elemento.classList.remove('activa');
+                elemento.querySelector('.respuesta').style.maxHeight=null;
+            }
+        });
+    });
 });
