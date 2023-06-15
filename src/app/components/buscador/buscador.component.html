@@ -7,10 +7,11 @@
         aria-label="Buscar"
         matInput
         [formControl]="myControl"
-        [matAutocomplete]="auto"
+        
         (keydown.tab)="selectFirstOption($event)"
         (keydown.enter)="obtenerImagenes()"
       />
+      <!--  [matAutocomplete]="auto"  -->
       <mat-icon matSuffix>search</mat-icon>
       <mat-hint>Presiona tabulador para autocompletar</mat-hint>
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">

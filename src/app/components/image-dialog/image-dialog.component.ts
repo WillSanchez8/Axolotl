@@ -18,6 +18,15 @@ export class ImageDialogComponent {
   ) {}
 
   @HostListener('document:keydown', ['$event'])
+
+  //CODIGO REDUCIDO
+  
+  
+  handleKeyboardEvent(event: KeyboardEvent) {
+    event.key === 'ArrowLeft' ? this.onPrevious() : event.key === 'ArrowRight' ? this.onNext() : null;
+  }
+  
+  /*
   handleKeyboardEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowLeft') {
       this.onPrevious();
@@ -25,7 +34,17 @@ export class ImageDialogComponent {
       this.onNext();
     }
   }
+  */
 
+  //CODIGO REDUCIDO
+  onPrevious() {
+    this.data.index > 0 ? (this.data.index--, 
+      this.data.url = this.data.images[this.data.index].src.large,
+      this.isPreviousClicked = true,
+      setTimeout(() => { this.isPreviousClicked = false; }, 100)) : null;
+  }
+
+  /*
   onPrevious() {
     if (this.data.index > 0) {
       this.data.index--;
@@ -36,7 +55,17 @@ export class ImageDialogComponent {
       }, 100);
     }
   }
+  */
 
+  //CODIGO REDUCIDO
+  onNext() {
+    this.data.index < this.data.images.length - 1 ? (this.data.index++,
+      this.data.url = this.data.images[this.data.index].src.large,
+      this.isNextClicked = true,
+      setTimeout(() => { this.isNextClicked = false; }, 100)) : null;
+  }
+
+  /*
   onNext() {
     if (this.data.index < this.data.images.length - 1) {
       this.data.index++;
@@ -47,12 +76,11 @@ export class ImageDialogComponent {
       }, 100);
     }
   }
-
+  */
   onClose() {
     this.dialogRef.close();
     this.isCloseClicked = true;
-    setTimeout(() => {
-      this.isCloseClicked = false;
-    }, 100);
+    setTimeout(() => { this.isCloseClicked = false; }, 100);
   }
+  
 }

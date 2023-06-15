@@ -34,6 +34,13 @@ export class BuscadorComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
 
   generarTerminoAleatorio(): string {
+    const index = Math.floor(Math.random() * this.palabras.length);
+    const palabraAleatoria = this.palabras.splice(index, 1)[0];
+    return palabraAleatoria;
+  }
+  
+  /*
+  generarTerminoAleatorio(): string {
     let palabraAleatoria = '';
     const palabrasGeneradas: string[] = [];
     do {
@@ -43,14 +50,12 @@ export class BuscadorComponent implements OnInit {
     palabrasGeneradas.push(palabraAleatoria);
     return palabraAleatoria;
   }
-  
+  */
 
-  constructor(
-    private pexelsService: PexelsServiceService,
-  ) {}
+  constructor( private readonly pexelsService: PexelsServiceService, ) {}
 
   ngOnInit() {
-    this.obtenerImagenesAleatorias();
+    //this.obtenerImagenesAleatorias();
     this.obtenerConsultas();
     this.actualizarOpcionesAutocompletado();
   }
@@ -64,8 +69,22 @@ export class BuscadorComponent implements OnInit {
   
   obtenerImagenesAleatorias() {
     this.obtenerImagenes(this.generarTerminoAleatorio());
+    //this.obtenerImagenes(this.generarTerminoAleatorio());
+  }
+
+  //Codigo reducido
+  obtenerConsultas() {
+    this.pexelsService.getQueries().subscribe((queries) => {
+      const queriesUnicas = [...new Set(queries)];
+      this.palabras = [...this.palabras, ...queriesUnicas];
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value || '')),
+      );
+    });
   }
   
+  /*
   obtenerConsultas() {
     this.pexelsService.getQueries().subscribe((queries) => {
       const queriesUnicas = queries.filter((valor, indice) => {
@@ -78,7 +97,17 @@ export class BuscadorComponent implements OnInit {
       );
     });
   }  
-  
+  */
+
+  //Codigo reducido
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.palabras.filter((option, index) =>
+      option.toLowerCase().includes(filterValue) && this.palabras.indexOf(option) === index
+    );
+  }
+
+  /*
   private _filter(value: string): string[] {
     if (!value) {
       return this.palabras;
@@ -87,8 +116,25 @@ export class BuscadorComponent implements OnInit {
     return this.palabras.filter((option, index) =>
       option.toLowerCase().includes(filterValue) && this.palabras.indexOf(option) === index
     );
-  }  
+  }
+  */
 
+  //Reduccion de codigo
+  selectFirstOption(event: Event) {
+    this.filteredOptions.subscribe((options) => {
+      const inputValue = this.myControl.value;
+      if (inputValue) {
+        const bestMatch = options.find((option) =>
+          option.startsWith(inputValue)
+        );
+        if (bestMatch) {
+          this.myControl.setValue(bestMatch);
+        }
+      }
+    });
+  }
+  
+  /*
   selectFirstOption(event: Event) {
     event.preventDefault();
     this.filteredOptions.subscribe((options) => {
@@ -103,6 +149,8 @@ export class BuscadorComponent implements OnInit {
       }
     });
   }
+  */
+
 
   obtenerImagenes(query: string | null = this.myControl.value) {
     if (query) {
@@ -146,4 +194,5 @@ export class BuscadorComponent implements OnInit {
       }
     );
   }
+  
 }

@@ -13,6 +13,12 @@ export class HeaderComponent implements AfterViewInit {
 
   constructor(private elementRef: ElementRef) {}
 
+  //CODIGO REDUCIDO
+  ngAfterViewInit() {
+    this.elementRef.nativeElement.querySelector('#logo').addEventListener('dragstart', (event: DragEvent) => {  event.preventDefault(); });
+  }
+  
+  /*
   ngAfterViewInit() {
     const logo = this.elementRef.nativeElement.querySelector('#logo');
     if (logo) {
@@ -21,6 +27,8 @@ export class HeaderComponent implements AfterViewInit {
       });
     }
   }
+  */
+
 
   
 }

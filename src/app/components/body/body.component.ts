@@ -12,12 +12,8 @@ export class BodyComponent {
   constructor(public dialog: MatDialog) { }
 
   verImagen(index: number) {
-    const dialogRef = this.dialog.open(ImageDialogComponent, {
-      data: { url: this.fotos[index].src.large, index, images: this.fotos },
-    });
+    const dialogRef = this.dialog.open(ImageDialogComponent, { data: { url: this.fotos[index].src.large, index, images: this.fotos }, });
     this.isDialogOpen = true;
-    dialogRef.afterClosed().subscribe(() => {
-      this.isDialogOpen = false;
-    });
-  }  
+    dialogRef.afterClosed().subscribe(() => this.isDialogOpen = false );
+  } 
 }
