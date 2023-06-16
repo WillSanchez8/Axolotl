@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { PexelsServiceService } from '../../services/pexels-service.service';
 import { Etiqueta } from 'src/app/interfaces/etiquetas';
 import { Observable, map, startWith } from 'rxjs';
-
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -119,19 +119,13 @@ export class BuscadorComponent implements OnInit {
   }
   */
 
-  //Reduccion de codigo
-  selectFirstOption(event: Event) {
-    this.filteredOptions.subscribe((options) => {
-      const inputValue = this.myControl.value;
-      if (inputValue) {
-        const bestMatch = options.find((option) =>
-          option.startsWith(inputValue)
-        );
-        if (bestMatch) {
-          this.myControl.setValue(bestMatch);
-        }
-      }
-    });
+  onOptionSelected(event: MatAutocompleteSelectedEvent) {
+    this.myControl.setValue(event.option.value);
+  }    
+  
+  onTabPress(event: Event) {
+    event.preventDefault();
+    // Aquí puedes agregar cualquier otra lógica que quieras ejecutar cuando se presione la tecla Tab
   }
   
   /*

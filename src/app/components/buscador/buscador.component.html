@@ -7,21 +7,19 @@
         aria-label="Buscar"
         matInput
         [formControl]="myControl"
-        
-        (keydown.tab)="selectFirstOption($event)"
+        [matAutocomplete]="auto"
         (keydown.enter)="obtenerImagenes()"
+        (keydown.Tab)="onTabPress($event)"
       />
-      <!--  [matAutocomplete]="auto"  -->
       <mat-icon matSuffix>search</mat-icon>
-      <mat-hint>Presiona tabulador para autocompletar</mat-hint>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
         <mat-option
           *ngFor="let option of filteredOptions | async"
           [value]="option"
         >
           {{ option }}
         </mat-option>
-      </mat-autocomplete>
+      </mat-autocomplete>            
     </mat-form-field>
   </form>
 </div>
