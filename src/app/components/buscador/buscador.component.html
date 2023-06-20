@@ -8,29 +8,29 @@
         matInput
         [formControl]="myControl"
         [matAutocomplete]="auto"
-        (keydown.tab)="selectFirstOption($event)"
-        (keydown.enter)="obtenerImagenes()"
+        (keydown.enter)="obtenerImagenes2()"
+        (keydown.Tab)="onTabPress($event)"
       />
       <mat-icon matSuffix>search</mat-icon>
-      <mat-hint>Presiona tabulador para autocompletar</mat-hint>
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
         <mat-option
           *ngFor="let option of filteredOptions | async"
           [value]="option"
         >
           {{ option }}
         </mat-option>
-      </mat-autocomplete>
+      </mat-autocomplete>            
     </mat-form-field>
   </form>
 </div>
+<!--HOLA-->
 
 <mat-chip-listbox *ngIf="etiquetas.length > 0">
   <mat-chip-option
     *ngFor="let etiqueta of etiquetas"
     [value]="etiqueta"
     [selected]="etiqueta.seleccionada"
-    (click)="buscarPorEtiqueta(etiqueta.espanol)"
+    (click)="buscarPorEtiqueta2(etiqueta.espanol)"
   >
     {{ etiqueta.espanol }}
   </mat-chip-option>
