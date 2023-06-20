@@ -160,6 +160,8 @@ export class BuscadorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        //MOSTRAR UNA ALERTA
+        error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
       }
     );
   }
@@ -173,6 +175,8 @@ export class BuscadorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
+        //MOSTRAR UNA ALERTA
+        error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
       }
     );
   }

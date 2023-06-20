@@ -8,7 +8,7 @@
         matInput
         [formControl]="myControl"
         [matAutocomplete]="auto"
-        (keydown.enter)="obtenerImagenes()"
+        (keydown.enter)="obtenerImagenes2()"
         (keydown.Tab)="onTabPress($event)"
       />
       <mat-icon matSuffix>search</mat-icon>
@@ -29,7 +29,7 @@
     *ngFor="let etiqueta of etiquetas"
     [value]="etiqueta"
     [selected]="etiqueta.seleccionada"
-    (click)="buscarPorEtiqueta(etiqueta.espanol)"
+    (click)="buscarPorEtiqueta2(etiqueta.espanol)"
   >
     {{ etiqueta.espanol }}
   </mat-chip-option>
