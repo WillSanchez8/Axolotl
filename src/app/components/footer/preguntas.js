@@ -1,4 +1,8 @@
-const pregunta=document.querySelectorAll('.pregunta .contenedor');
+const prueba = document.getElementById('prueba');
+prueba.click(function(){
+    console.log('click me');
+})
+const pregunta=document.querySelectorAll('.preguntas .contenedor');
 pregunta.forEach((pregunta)=>{
     pregunta.addEventListener('click',(e)=>{
         e.currentTarget.classList.toggle('activa');
