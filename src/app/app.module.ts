@@ -37,6 +37,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 **/
 import { HttpClientModule } from '@angular/common/http';
 import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
+import { SkeletonComponent } from './components/skeleton/skeleton.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { ImageDialogComponent } from './components/image-dialog/image-dialog.com
     NavigationComponent,
     BuscadorComponent,
     ThemeSwitcherComponent,
-    ImageDialogComponent
+    ImageDialogComponent,
+    SkeletonComponent
   ],
   imports: [
     BrowserModule,
