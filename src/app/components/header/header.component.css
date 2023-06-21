@@ -111,7 +111,7 @@ app-theme-switcher {
   z-index: 10000;
   animation: popup-entrance 0.5s ease-in-out;  
 }
-
+/*Color de la x*/
 .close {
   position: absolute;
   top: 10px;
@@ -121,9 +121,9 @@ app-theme-switcher {
   color: #000000;
   transition: color 0.3s ease-in-out;
 }
-
+/* */
 .close:hover {
-  color: #080505;
+  color: #ff0000;
 }
 
 .popup-title {
@@ -134,7 +134,7 @@ app-theme-switcher {
 
 .popup-description {
   font-size: 16px;
-  color: #050505;
+  color: #000000;
 }
 
 .overlay {
@@ -143,7 +143,7 @@ app-theme-switcher {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(206, 170, 170, 0.5);
   backdrop-filter: blur(5px);
   display: none;
   z-index: 9999;
