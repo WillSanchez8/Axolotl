@@ -33,6 +33,8 @@ export class BuscadorComponent implements OnInit {
   ];
   filteredOptions!: Observable<string[]>;
 
+
+  //CODIGO REDUCIDO
   generarTerminoAleatorio(): string {
     const index = Math.floor(Math.random() * this.palabras.length);
     const palabraAleatoria = this.palabras.splice(index, 1)[0];
@@ -68,7 +70,7 @@ export class BuscadorComponent implements OnInit {
     
   
   obtenerImagenesAleatorias() {
-    this.obtenerImagenes(this.generarTerminoAleatorio());
+    this.obtenerImagenes2(this.generarTerminoAleatorio());
     //this.obtenerImagenes(this.generarTerminoAleatorio());
   }
 
@@ -145,7 +147,53 @@ export class BuscadorComponent implements OnInit {
   }
   */
 
+  //Codigo reducido
+  
+  obtenerImagenes2 (query : string | null = this.myControl.value){
+    !query? null : this.pexelsService.getImages(query).subscribe(
+      (data: any) => {
+        this.fotos = data.photos;
+        this.etiquetas = this.crearEtiquetas(data.labels[0]);
+        console.log(this.fotos);
+        this.pushToPalabras(query);
+        this.actualizarFotos.emit(this.fotos);
+      },
+      (error) => {
+        console.log(error);
+        //MOSTRAR UNA ALERTA
+        error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
+      }
+    );
+  }
+  buscarPorEtiqueta2(etiqueta: string) {
+    this.pexelsService.getImages(etiqueta).subscribe(
+      (data: any) => {
+        this.fotos = data.photos;
+        this.etiquetas = this.crearEtiquetas(data.labels[0]);
+        console.log(this.fotos);
+        this.actualizarFotos.emit(this.fotos);
+      },
+      (error) => {
+        console.log(error);
+        //MOSTRAR UNA ALERTA
+        error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
+      }
+    );
+  }
+  //Nuevos metodos
+ crearEtiquetas(labels: string[]): any[]{
+    return labels.map((label: string) => ({
+      ingles: '',
+      espanol: label,
+      seleccionada: false,
+    }));
+  }
+ pushToPalabras(query: string) {
+    !this.palabras.push(query)? this.palabras.push(query) : null;
+  }
 
+
+  /*
   obtenerImagenes(query: string | null = this.myControl.value) {
     if (query) {
       this.pexelsService.getImages(query).subscribe(
@@ -188,5 +236,6 @@ export class BuscadorComponent implements OnInit {
       }
     );
   }
+  */
   
 }
