@@ -1,0 +1,140 @@
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px; 
+  }
+  /*Aqui son los colores para la ventana flotante*/
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    padding: 100px;
+    background-color: #e3c4ed;
+    border: 1px solid #df237e;
+    box-shadow: 0px 2px 10px rgb(235, 4, 200);
+    z-index: 10000;
+    animation: popup-entrance 0.5s ease-in-out;  
+  }
+  /*Color de la x*/
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 50px;
+    color: #000000;
+    transition: color 0.3s ease-in-out;
+  }
+  /* */
+  .close:hover {
+    color: #ff0000;
+  }
+  
+  .popup-title {
+    font-size: 24px;
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  
+  .popup-description {
+    font-size: 16px;
+    color: #000000;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(206, 170, 170, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    z-index: 9999;
+  }
+  
+  .show-popup {
+    display: block;
+  }
+  
+  /* Animación de entrada para la ventana emergente */
+  @keyframes popup-entrance {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes popup-entrance {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  
+  /* Estilos responsivos */
+  @media (max-width: 600px) {
+    .popup {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .popup {
+      width: 90%;
+      padding: 10px;
+    }
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  /*AQUI ES EL TITULO*/
+  th {
+    background-color:#934793;
+    font-weight: bold;
+  }
+  /*sombreado de mouse*/
+  tr:hover {
+    background-color: #e490cf;
+  }
+  .close {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    cursor: pointer;
+  }
+  .agradecimientos {
+    text-align: center;
+    pointer-events: none;
+  }
+  .agre{
+    pointer-events: none;
+    text-align: center;
+    max-width: 80%;
+    margin-left: 55px;
+    margin-top: 30px;
+    height: auto;
+  }
+  
+  
+  
+  
