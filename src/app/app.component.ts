@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Axolotl';
+
+  desactivarBlur() {
+    const mainBlurElement = document.querySelector('.main-blur') as HTMLElement;
+    if (mainBlurElement) {
+      mainBlurElement.style.filter = 'none';
+    }
+  }
 }
