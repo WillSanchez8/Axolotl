@@ -8,30 +8,6 @@ import 'bootstrap';
 })
 export class HeaderComponent implements AfterViewInit {
   constructor(private elementRef: ElementRef) {}
-
-  ngOnInit(): void {
-    document.addEventListener("DOMContentLoaded", function(event) {
-      // Obtén referencias a los elementos de la ventana emergente
-      const popup = document.getElementById("popup");
-      const closeBtn = document.querySelector(".close");
-
-
-      //REDUCCION DE CODIGO
-      popup && closeBtn && closeBtn.addEventListener("click", function() { popup.style.display = "none"; });
-      /*
-      // Verifica si los elementos existen antes de continuar
-      if (popup && closeBtn) {
-        // Agrega un evento de clic al botón de cierre para ocultar la ventana emergente
-        closeBtn.addEventListener("click", function() {
-          popup.style.display = "none";
-        });
-  
-        // Muestra la ventana emergente cuando se cargue la página
-        popup.style.display = "block";
-      }
-      */
-    });
-  }
   
 
   
