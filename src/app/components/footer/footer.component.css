@@ -88,8 +88,7 @@
     font-family: 'Raleway', sans-serif;
 }
 .contenedor-acordeon{
-    width: 100%;
-    max-width: 800px;
+    
     margin: auto;
     margin-top: 80px;
 }
@@ -105,7 +104,7 @@
     display: block;
     padding: 20px;
     font-size: 20px;
-    background: #1c1c1c;
+    background: #7e2180;
     color: #fff;
     cursor: pointer;
     margin-bottom: 2px;
