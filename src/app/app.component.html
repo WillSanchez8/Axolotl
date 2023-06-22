@@ -3,6 +3,9 @@
 <div class="main-blur">
     <router-outlet></router-outlet>
     <app-navigation></app-navigation>
+  
 </div>
+ <!-- Dentro de app.component.html -->
+<app-bienvenida (cerrarVentana)="desactivarBlur()"></app-bienvenida>
 
 </div>
