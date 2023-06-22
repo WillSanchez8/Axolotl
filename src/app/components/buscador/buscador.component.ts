@@ -52,19 +52,6 @@ export class BuscadorComponent implements OnInit {
     const palabraAleatoria = this.palabras.splice(index, 1)[0];
     return palabraAleatoria;
   }
-  
-  /*
-  generarTerminoAleatorio(): string {
-    let palabraAleatoria = '';
-    const palabrasGeneradas: string[] = [];
-    do {
-      const index = Math.floor(Math.random() * this.palabras.length);
-      palabraAleatoria = this.palabras[index];
-    } while (palabrasGeneradas.includes(palabraAleatoria));
-    palabrasGeneradas.push(palabraAleatoria);
-    return palabraAleatoria;
-  }
-  */
 
   constructor( private readonly pexelsService: PexelsServiceService, ) { this.iniciarVerificacionConeccion(); }
 
@@ -97,21 +84,6 @@ export class BuscadorComponent implements OnInit {
       );
     });
   }
-  
-  /*
-  obtenerConsultas() {
-    this.pexelsService.getQueries().subscribe((queries) => {
-      const queriesUnicas = queries.filter((valor, indice) => {
-        return queries.indexOf(valor) === indice;
-      });
-      this.palabras = [...this.palabras, ...queriesUnicas];
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value || '')),
-      );
-    });
-  }  
-  */
 
   //Codigo reducido
   private _filter(value: string): string[] {
@@ -120,18 +92,6 @@ export class BuscadorComponent implements OnInit {
       option.toLowerCase().includes(filterValue) && this.palabras.indexOf(option) === index
     );
   }
-
-  /*
-  private _filter(value: string): string[] {
-    if (!value) {
-      return this.palabras;
-    }
-    const filterValue = value.toLowerCase();
-    return this.palabras.filter((option, index) =>
-      option.toLowerCase().includes(filterValue) && this.palabras.indexOf(option) === index
-    );
-  }
-  */
 
   onOptionSelected(event: MatAutocompleteSelectedEvent) {
     this.myControl.setValue(event.option.value);
@@ -201,51 +161,5 @@ export class BuscadorComponent implements OnInit {
  pushToPalabras(query: string) {
     !this.palabras.push(query)? this.palabras.push(query) : null;
   }
-
-
-  /*
-  obtenerImagenes(query: string | null = this.myControl.value) {
-    if (query) {
-      this.pexelsService.getImages(query).subscribe(
-        (data: any) => {
-          this.fotos = data.photos;
-          this.etiquetas = data.labels[0].map((label: string) => ({
-            ingles: '',
-            espanol: label,
-            seleccionada: false,
-          }));
-          console.log(this.fotos);
-          if (!this.palabras.includes(query)) {
-            this.palabras.push(query);
-          }
-          // Emitir evento con las nuevas imágenes
-          this.actualizarFotos.emit(this.fotos);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    }
-  }  
-
-  buscarPorEtiqueta(etiqueta: string) {
-    this.pexelsService.getImages(etiqueta).subscribe(
-      (data: any) => {
-        this.fotos = data.photos;
-        this.etiquetas = data.labels[0].map((label: string) => ({
-          ingles: '',
-          espanol: label,
-          seleccionada: false,
-        }));
-        console.log(this.fotos);
-        // Emitir evento con las nuevas imágenes
-        this.actualizarFotos.emit(this.fotos);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }
-  */
   
 }
