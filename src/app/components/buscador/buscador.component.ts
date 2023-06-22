@@ -33,6 +33,18 @@ export class BuscadorComponent implements OnInit {
   ];
   filteredOptions!: Observable<string[]>;
 
+  //variable de confirmacion de coneccion y tiempo de la misma
+  conec: boolean = true;
+  conexionInternetIntervalo: any;
+
+  iniciarVerificacionConeccion(){
+    this.conexionInternetIntervalo = setInterval (() => {this.verificarConexionInternet();}, 5000);
+  }
+
+  verificarConexionInternet () {
+    navigator.onLine? this.conec=true : this.conec=false;
+  }
+
 
   //CODIGO REDUCIDO
   generarTerminoAleatorio(): string {
@@ -54,7 +66,7 @@ export class BuscadorComponent implements OnInit {
   }
   */
 
-  constructor( private readonly pexelsService: PexelsServiceService, ) {}
+  constructor( private readonly pexelsService: PexelsServiceService, ) { this.iniciarVerificacionConeccion(); }
 
   ngOnInit() {
     //this.obtenerImagenesAleatorias();
@@ -150,8 +162,8 @@ export class BuscadorComponent implements OnInit {
   //Codigo reducido
   
   obtenerImagenes2 (query : string | null = this.myControl.value){
-    !query? null : this.pexelsService.getImages(query).subscribe(
-      (data: any) => {
+    !this.conec? alert('No hay conexión a internet') : !query? null: this.pexelsService.getImages(query).subscribe(
+      (data: any) => { 
         this.fotos = data.photos;
         this.etiquetas = this.crearEtiquetas(data.labels[0]);
         console.log(this.fotos);
@@ -160,13 +172,12 @@ export class BuscadorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        //MOSTRAR UNA ALERTA
         error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
       }
     );
   }
   buscarPorEtiqueta2(etiqueta: string) {
-    this.pexelsService.getImages(etiqueta).subscribe(
+    !this.conec? alert ('No hay coneccion a internet') : this.pexelsService.getImages(etiqueta).subscribe(
       (data: any) => {
         this.fotos = data.photos;
         this.etiquetas = this.crearEtiquetas(data.labels[0]);
@@ -175,7 +186,6 @@ export class BuscadorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        //MOSTRAR UNA ALERTA
         error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
       }
     );

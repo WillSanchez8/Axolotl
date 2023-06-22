@@ -1,51 +1,49 @@
 <body>
     <!--Preguntas-->
-<main>
-    <h1 class="titulo">Preguntas Frecuentes</h1>
-    <div class="preguntas">
-            <div class="contenedor_preguntas">
-                <div class="contenedor">
-                    <p class="pregunta">¿Qué herramientas se utilizaron?<img src="assets/logos/plus1.png" alt="abrir"></p>
-                    <p class="respuesta">¿Quienes somos?</p>
-                </div>
-                <div class="contenedor">
-                    <p class="pregunta">¿Quienes somos?<img src="assets/logos/plus1.png" alt="abrir"></p>
-                    <p class="respuesta">¿Quienes somos?</p>
-                </div>
+    <div class="contenedor-acordeon">
+        <h2>Preguntas frecuentes</h2>
+        <div class="acordeon">
+            <input type="radio" name="acordeon" id="btn-acordeon1" class="btn-acordeon">
+            <label for="btn-acordeon1">
+                ¿Quienes somos?
+            </label>
+            <div class="contenido-acordeon">
+                <p>Somos estudientes de octavo grado de la Ingeniería en Sistemas Computacionales del Tecnológico de Estudios 
+                    Superiores Chalco y el equipo esta conformado por:
+                    <li>Aguilar Sánchez Willian Gabriel</li>
+                    <li>Cazares Martínez Mauricio Javier </li>
+                    <li>Rayón Cornejo Sergio Augusto</li>
+                    <li>Reyes Cañeda Rene</li>
+                    <li>Ruíz Vargas José Fernando</li>
+                </p>
             </div>
         </div>
-</main>
+        <div class="acordeon">
+         <input type="radio" name="acordeon" id="btn-acordeon2" class="btn-acordeon">
+         <label for="btn-acordeon2">
+             ¿Qué herramientas se utilizarón?
+         </label>
+         <div class="contenido-acordeon">
+             <p>Las herramientas que se utilizaron para lograr esta página web son las siguientes:
+                Pixels:
+             </p>
+         </div>
+     </div>
+     <div class="acordeon">
+         <input type="radio" name="acordeon" id="btn-acordeon3" class="btn-acordeon">
+         <label for="btn-acordeon3">
+             ¿Porqué se decidió hacer esto?
+         </label>
+         <div class="contenido-acordeon">
+            <p></p>
+         </div>
+     </div>
 <!--Iconos-->
 <script src="https://kit.fontawesome.com/eb496ab1a0.js"></script>
 <!--Footer-->
 <footer class="pie-pagina">
-    <div class="grupo1">
-        <div class="box">
-           <div class="box">
-            <figure>
-                <a href="#">
-                    <img src="assets/logos/logo.png" alt="Logo Axolotl">
-                </a>
-            </figure>
-           </div>
-           <div class="box">
-            <h3>Sobre nosotros</h3>
-            <p>Hecho por estudiantes de ingenieria en sistemas</p>
-            <p>computacionales del Tecnológico de Estudios Superiores Chalco </p>
-            </div>
-           <div class="box">
-            <h3>Siguenos</h3>
-            <div class="red-social"></div>
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-instagram"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-Youtube"></a>
-           </div>
-        </div>
-    </div>
     <div class="grupo2">
         <small>&copy;2023 <b>Axolotl</b> -Derechos Reservados</small>
     </div>
 </footer>
 <script src="./preguntas.js"></script>
-</body>
