@@ -163,7 +163,7 @@ export class BuscadorComponent implements OnInit {
   
   obtenerImagenes2 (query : string | null = this.myControl.value){
     !this.conec? alert('No hay conexión a internet') : !query? null: this.pexelsService.getImages(query).subscribe(
-      (data: any) => {
+      (data: any) => { 
         this.fotos = data.photos;
         this.etiquetas = this.crearEtiquetas(data.labels[0]);
         console.log(this.fotos);
