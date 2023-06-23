@@ -18,10 +18,12 @@ export class BuscadorComponent implements OnInit {
 
   //fotos es un array que almacena las fotos que se obtienen de la API
   fotos: any[] = [];
+  existe: boolean = false;
 
   isDialogOpen = false;
 
   @Output() actualizarFotos = new EventEmitter<any[]>();
+  @Output() notFound = new EventEmitter<boolean>();
 
   palabras: string[] = [
     'naturaleza',
@@ -120,24 +122,27 @@ export class BuscadorComponent implements OnInit {
   */
 
   //Codigo reducido
-  
+  cargando: boolean = false; //variable para animacion de carga
+
   obtenerImagenes2 (query : string | null = this.myControl.value){
-    !this.conec? alert('No hay conexión a internet') : !query? null: this.pexelsService.getImages(query).subscribe(
+    this.cargando = true; //animacion de carga activada
+    !this.conec? console.log("No hay conecion a internet") : !query? null: this.pexelsService.getImages(query).subscribe(
       (data: any) => { 
         this.fotos = data.photos;
-        this.etiquetas = this.crearEtiquetas(data.labels[0]);
-        console.log(this.fotos);
-        this.pushToPalabras(query);
-        this.actualizarFotos.emit(this.fotos);
+        this.fotos.length===0? (this.existe=true, this.notFound.emit(this.existe)) : (this.etiquetas = this.crearEtiquetas(data.labels[0]),
+        this.pushToPalabras(query),
+        this.actualizarFotos.emit(this.fotos));
       },
       (error) => {
         console.log(error);
-        error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
+        error.status === 404? console.log("No se encontraron resultados") : alert('Error en el servidor');
       }
     );
+    this.cargando = false; //animacion de carga desactivada
   }
   buscarPorEtiqueta2(etiqueta: string) {
-    !this.conec? alert ('No hay coneccion a internet') : this.pexelsService.getImages(etiqueta).subscribe(
+    this.cargando = true; //animacion de carga activada
+    !this.conec? console.log("No hay conecion a internet") : this.pexelsService.getImages(etiqueta).subscribe(
       (data: any) => {
         this.fotos = data.photos;
         this.etiquetas = this.crearEtiquetas(data.labels[0]);
@@ -146,9 +151,10 @@ export class BuscadorComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        error.status === 404? alert('No se encontraron resultados') : alert('Error en el servidor');
+        error.status === 404? console.log("No se encontraron resultados") : alert('Error en el servidor');
       }
     );
+    this.cargando = false; //animacion de carga desactivada
   }
   //Nuevos metodos
  crearEtiquetas(labels: string[]): any[]{

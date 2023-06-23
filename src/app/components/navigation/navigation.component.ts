@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
   fotos: any[] = [];
+  notFound: boolean = false;
 
   actualizarFotos(fotos: any[]) {
     this.fotos = fotos;
+  }
+  capturarNotFound(notFound: boolean) {
+    this.notFound = notFound;
   }
 }
