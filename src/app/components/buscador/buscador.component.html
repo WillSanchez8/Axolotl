@@ -1,3 +1,4 @@
+<!--BARRA DE BUSQUEDA-->
 <div class="center-content">
   <form class="example-form">
     <mat-form-field class="width">
@@ -23,7 +24,7 @@
     </mat-form-field>
   </form>
 </div>
-<!--HOLA-->
+<!--ETIQUETAS-->
 
 <mat-chip-listbox *ngIf="etiquetas.length > 0">
   <mat-chip-option
@@ -36,14 +37,13 @@
   </mat-chip-option>
 </mat-chip-listbox>
 
+<!--FALLA DE LA CONEXION A INTERNET-->
+<div id="alert1" class="alert" *ngIf="conec==false">¡Alerta! La conexión ha fallado.</div>
 
-<div id="alert1" class="alert">¡Alerta! La conexión ha fallado.</div>
-
-
-
+<!--PANTALLA DE CARGA //// AJOLOTITO CAMINANDO-->
 <body>
   
-<div mat-dialog-content class="slider">
+<div mat-dialog-content class="slider" *ngIf="cargando==true">
   <div class="slide-track">
     <div class="slide">
         <img src="assets/slider/ajo1.png" alt="prueba">
