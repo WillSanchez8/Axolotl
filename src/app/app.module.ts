@@ -38,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageDialogComponent } from './components/image-dialog/image-dialog.component';
 import { BienvenidaComponent } from './components/bienvenida/bienvenida.component';
+import { CargaComponent } from './components/carga/carga.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { BienvenidaComponent } from './components/bienvenida/bienvenida.componen
     BuscadorComponent,
     ThemeSwitcherComponent,
     ImageDialogComponent,
-    BienvenidaComponent
+    BienvenidaComponent,
+    CargaComponent
   ],
   imports: [
     BrowserModule,
