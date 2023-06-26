@@ -154,6 +154,7 @@ export class BuscadorComponent implements OnInit {
         this.fotos = data.photos;
         this.fotos.length===0? (this.existe=true, this.notFound.emit(this.existe)) : (this.etiquetas = this.crearEtiquetas(data.labels[0]),
         this.pushToPalabras(query),
+        console.log(this.fotos),
         this.actualizarFotos.emit(this.fotos));
       },
       (error) => {
