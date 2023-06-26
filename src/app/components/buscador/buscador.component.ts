@@ -85,6 +85,7 @@ export class BuscadorComponent implements OnInit {
     //this.obtenerImagenesAleatorias();
     this.obtenerConsultas();
     this.actualizarOpcionesAutocompletado();
+    this.openDialog();
   }
   
   actualizarOpcionesAutocompletado() {
