@@ -36,8 +36,10 @@ export class BodyComponent {
     setTimeout(() => {
       this.carga.closeAll();
     }
-    , 3000);
+    , 6000);
   }
+
+  //Codigo reducido
 
   //Verificar la renderizacion de las imagenes
   revicionRenImagenes() {
