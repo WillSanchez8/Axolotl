@@ -46,7 +46,7 @@
     line-height: 45px;
     color: #fff;
     margin-right: 10px;
-    background-color: #4b0953;
+    background-color: #ad28bc;
     text-align: center;
     transition: all 300ms ease;
   }
@@ -54,7 +54,7 @@
     color:pink;
 }
 .pie-pagina .grupo2{
-  background-color: rgb(69, 25, 62);
+  background-color: rgb(188, 56, 166);
   padding: 15px 10px;
   text-align: center;
   color: #fff;
@@ -104,7 +104,7 @@
     display: block;
     padding: 20px;
     font-size: 20px;
-    background: #7e2180;
+    background: #dd3ee0;
     color: #fff;
     cursor: pointer;
     margin-bottom: 2px;
@@ -126,4 +126,36 @@
 }
 .btn-acordeon{
     display: none;
+}
+
+.imagen{
+  width: 100px;
+  height: 40;
+}
+.firebase{
+  width: 200px;
+  height: 40;
+}
+.express{
+  width: 200px;
+  height: 40;
+}
+
+.tabla{
+  width: 100%;
+  border-radius: 30px;
+}
+th, td{
+  width: 25%;
+  text-align: center;
+  vertical-align: top;
+  background-color: #d371d4;
+}
+.letra{
+  color: white;
+  font-weight: bold;
+}
+.contenido-acordeon{
+  background-color: #934793;
+  text-align: center;
 }
