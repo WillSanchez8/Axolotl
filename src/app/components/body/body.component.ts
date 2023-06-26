@@ -33,7 +33,10 @@ export class BodyComponent {
   //cerrar pantalla de carga
   closeDialog() {
     this.isDialogOpen = false;
-    this.carga.closeAll();
+    setTimeout(() => {
+      this.carga.closeAll();
+    }
+    , 3000);
   }
 
   //Verificar la renderizacion de las imagenes
@@ -55,7 +58,7 @@ export class BodyComponent {
       }
     }, 1000);
     console.log("imagenes renderizadas");
-    //this.closeDialog();
+    this.closeDialog();
   }
   
 }
