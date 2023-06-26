@@ -63,8 +63,8 @@ export class BuscadorComponent implements OnInit {
   //pantalla de carga
   openDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '500px';
-    dialogConfig.height = '700px';
+    dialogConfig.width = '150px';
+    dialogConfig.height = '250px';
     const dialogRef = this.carga.open(CargaComponent, dialogConfig);
     /*
     this.isDialogOpen = true;
@@ -85,7 +85,6 @@ export class BuscadorComponent implements OnInit {
     //this.obtenerImagenesAleatorias();
     this.obtenerConsultas();
     this.actualizarOpcionesAutocompletado();
-    this.openDialog();
   }
   
   actualizarOpcionesAutocompletado() {
