@@ -71,7 +71,7 @@ import { CargaComponent } from './components/carga/carga.component';
     HttpClientModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
