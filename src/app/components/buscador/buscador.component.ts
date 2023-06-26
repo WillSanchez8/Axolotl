@@ -4,6 +4,8 @@ import { PexelsServiceService } from '../../services/pexels-service.service';
 import { Etiqueta } from 'src/app/interfaces/etiquetas';
 import { Observable, map, startWith } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CargaComponent } from '../carga/carga.component';
 @Component({
   selector: 'app-buscador',
   templateUrl: './buscador.component.html',
@@ -24,6 +26,7 @@ export class BuscadorComponent implements OnInit {
 
   @Output() actualizarFotos = new EventEmitter<any[]>();
   @Output() notFound = new EventEmitter<boolean>();
+  @Output() cerrarCarga = new EventEmitter<any>();
 
   palabras: string[] = [
     'naturaleza',
@@ -55,12 +58,34 @@ export class BuscadorComponent implements OnInit {
     return palabraAleatoria;
   }
 
-  constructor( private readonly pexelsService: PexelsServiceService, ) { this.iniciarVerificacionConeccion(); }
+  constructor( private readonly pexelsService: PexelsServiceService, private carga: MatDialog ) { this.iniciarVerificacionConeccion(); }
+
+  //pantalla de carga
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '500px';
+    dialogConfig.height = '700px';
+    const dialogRef = this.carga.open(CargaComponent, dialogConfig);
+    /*
+    this.isDialogOpen = true;
+    const dialogRef = this.carga.open(CargaComponent, { width: '250px', height: '400px', disableClose: true });
+    dialogRef.afterClosed().subscribe(() => {
+      this.isDialogOpen = false;
+    });
+    */
+  }
+  //cerrar pantalla de carga
+  closeDialog() {
+    this.isDialogOpen = false;
+    this.carga.closeAll();
+  }
+
 
   ngOnInit() {
     //this.obtenerImagenesAleatorias();
     this.obtenerConsultas();
     this.actualizarOpcionesAutocompletado();
+    this.openDialog();
   }
   
   actualizarOpcionesAutocompletado() {
@@ -122,10 +147,9 @@ export class BuscadorComponent implements OnInit {
   */
 
   //Codigo reducido
-  cargando: boolean = false; //variable para animacion de carga
 
   obtenerImagenes2 (query : string | null = this.myControl.value){
-    this.cargando = true; //animacion de carga activada
+    this.openDialog();
     !this.conec? console.log("No hay conecion a internet") : !query? null: this.pexelsService.getImages(query).subscribe(
       (data: any) => { 
         this.fotos = data.photos;
@@ -138,10 +162,10 @@ export class BuscadorComponent implements OnInit {
         error.status === 404? console.log("No se encontraron resultados") : alert('Error en el servidor');
       }
     );
-    this.cargando = false; //animacion de carga desactivada
+    this.cerrarCarga.emit();
   }
   buscarPorEtiqueta2(etiqueta: string) {
-    this.cargando = true; //animacion de carga activada
+    this.openDialog();
     !this.conec? console.log("No hay conecion a internet") : this.pexelsService.getImages(etiqueta).subscribe(
       (data: any) => {
         this.fotos = data.photos;
@@ -154,7 +178,7 @@ export class BuscadorComponent implements OnInit {
         error.status === 404? console.log("No se encontraron resultados") : alert('Error en el servidor');
       }
     );
-    this.cargando = false; //animacion de carga desactivada
+    this.cerrarCarga.emit();
   }
   //Nuevos metodos
  crearEtiquetas(labels: string[]): any[]{

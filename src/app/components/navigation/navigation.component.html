@@ -1,4 +1,4 @@
 <app-header></app-header>
-<app-buscador (actualizarFotos)="actualizarFotos($event)" (notFound)="capturarNotFound($event)"></app-buscador>
-<app-body [fotos]="fotos" [noFound]="notFound"></app-body>
+<app-buscador (actualizarFotos)="actualizarFotos($event)" (notFound)="capturarNotFound($event)" (cerrarCarga)="body.verificarCargaImagenes()"></app-buscador>
+<app-body [fotos]="fotos" [noFound]="notFound" #body></app-body>
 <app-footer></app-footer>
