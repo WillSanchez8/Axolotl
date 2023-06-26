@@ -99,28 +99,6 @@
   font-size: 60px;
   margin-top: 10px;
 }
-.slider{
-  width: 20vw;
-  height: auto;
-  margin: 50px;
-  overflow: hidden;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-}
-.slider .slide-track{
-  display: flex;
-  animation: scroll 20s linear infinite;
-  -webkit-animation: scroll 20s linear infinite;
-  width: calc(200px * 14);
-}
-.slider .slide {
-  width: 250px;
-}
-
-.slider .slide img{
-  width: 250px;
-}
 
 @keyframes scroll {
   0% {
