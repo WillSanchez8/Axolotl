@@ -63,8 +63,6 @@ export class BuscadorComponent implements OnInit {
   //pantalla de carga
   openDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '150px';
-    dialogConfig.height = '250px';
     const dialogRef = this.carga.open(CargaComponent, dialogConfig);
     /*
     this.isDialogOpen = true;
