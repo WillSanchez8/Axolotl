@@ -27,6 +27,7 @@ export class BuscadorComponent implements OnInit {
   @Output() actualizarFotos = new EventEmitter<any[]>();
   @Output() notFound = new EventEmitter<boolean>();
   @Output() cerrarCarga = new EventEmitter<any>();
+  @Output() isLoading = new EventEmitter<boolean>();
 
   palabras: string[] = [
     'naturaleza',
@@ -71,6 +72,7 @@ export class BuscadorComponent implements OnInit {
       this.isDialogOpen = false;
     });
     */
+   this.isLoading.emit(true);
   }
   //cerrar pantalla de carga
   closeDialog() {

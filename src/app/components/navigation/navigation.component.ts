@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class NavigationComponent {
   fotos: any[] = [];
   notFound: boolean = false;
+  isLoading: boolean = false;
 
   actualizarFotos(fotos: any[]) {
     this.fotos = fotos;

@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ImageDialogComponent } from '../image-dialog/image-dialog.component';
 import { CargaComponent } from '../carga/carga.component';
@@ -12,6 +12,7 @@ import { Renderer2 } from '@angular/core';
 export class BodyComponent {
   @Input() fotos: any[] = [];
   @Input() noFound: boolean = false;
+  @Output() isLoading = new EventEmitter<boolean>();
   isDialogOpen = false;
   constructor(public dialog: MatDialog, private carga: MatDialog, private render: Renderer2) { }
 
@@ -35,6 +36,7 @@ export class BodyComponent {
     this.isDialogOpen = false;
     setTimeout(() => {
       this.carga.closeAll();
+      this.isLoading.emit(false);
     }
     , 6000);
   }
