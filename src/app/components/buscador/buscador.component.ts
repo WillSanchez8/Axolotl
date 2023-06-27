@@ -43,7 +43,7 @@ export class BuscadorComponent implements OnInit {
   conexionInternetIntervalo: any;
 
   iniciarVerificacionConeccion(){
-    this.conexionInternetIntervalo = setInterval (() => {this.verificarConexionInternet();}, 5000);
+    this.conexionInternetIntervalo = setInterval (() => {this.verificarConexionInternet();}, 2000);
   }
 
   verificarConexionInternet () {
@@ -85,7 +85,7 @@ export class BuscadorComponent implements OnInit {
     //this.obtenerImagenesAleatorias();
     this.obtenerConsultas();
     this.actualizarOpcionesAutocompletado();
-    this.openDialog();
+    //this.openDialog();
   }
   
   actualizarOpcionesAutocompletado() {
