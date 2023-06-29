@@ -44,7 +44,7 @@ export class BuscadorComponent implements OnInit {
   conexionInternetIntervalo: any;
 
   iniciarVerificacionConeccion(){
-    this.conexionInternetIntervalo = setInterval (() => {this.verificarConexionInternet();}, 2000);
+    this.conexionInternetIntervalo = setInterval (() => {this.verificarConexionInternet();}, 500);
   }
 
   verificarConexionInternet () {
@@ -78,6 +78,7 @@ export class BuscadorComponent implements OnInit {
   closeDialog() {
     this.isDialogOpen = false;
     this.carga.closeAll();
+    this.isLoading.emit(false);
   }
 
 
@@ -128,34 +129,18 @@ export class BuscadorComponent implements OnInit {
     event.preventDefault();
     // Aquí puedes agregar cualquier otra lógica que quieras ejecutar cuando se presione la tecla Tab
   }
-  
-  /*
-  selectFirstOption(event: Event) {
-    event.preventDefault();
-    this.filteredOptions.subscribe((options) => {
-      const inputValue = this.myControl.value;
-      if (inputValue) {
-        const bestMatch = options.find((option) =>
-          option.startsWith(inputValue)
-        );
-        if (bestMatch) {
-          this.myControl.setValue(bestMatch);
-        }
-      }
-    });
-  }
-  */
 
   //Codigo reducido
 
   obtenerImagenes2 (query : string | null = this.myControl.value){
     this.openDialog();
-    !this.conec? console.log("No hay conecion a internet") : !query? null: this.pexelsService.getImages(query).subscribe(
+    !this.conec? (console.log("No hay conecion a internet"), this.closeDialog()) : !query? null: this.pexelsService.getImages(query).subscribe(
       (data: any) => { 
         this.fotos = data.photos;
         this.fotos.length===0? (this.notFound.emit(this.existe = true)) : (this.etiquetas = this.crearEtiquetas(data.labels[0]),
         this.pushToPalabras(query),
         console.log(this.fotos),
+        this.notFound.emit(this.existe = false),
         this.actualizarFotos.emit(this.fotos));
       },
       (error) => {
@@ -167,11 +152,12 @@ export class BuscadorComponent implements OnInit {
   }
   buscarPorEtiqueta2(etiqueta: string) {
     this.openDialog();
-    !this.conec? console.log("No hay conecion a internet") : this.pexelsService.getImages(etiqueta).subscribe(
+    !this.conec? (console.log("No hay conecion a internet"), this.closeDialog()) : this.pexelsService.getImages(etiqueta).subscribe(
       (data: any) => {
         this.fotos = data.photos;
         this.etiquetas = this.crearEtiquetas(data.labels[0]);
         console.log(this.fotos);
+        this.notFound.emit(this.existe = false);
         this.actualizarFotos.emit(this.fotos);
       },
       (error) => {

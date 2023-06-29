@@ -1,6 +1,6 @@
 <div [ngClass]="{'blur': isLoading}">
     <app-header></app-header>
-    <app-buscador (actualizarFotos)="actualizarFotos($event)" (notFound)="capturarNotFound($event)" (cerrarCarga)="body.verificarCargaImagenes()" (isLoading)="isLoading = $event"></app-buscador>
+    <app-buscador (actualizarFotos)="actualizarFotos($event)" (notFound)="capturarNotFound($event)" (isLoading)="isLoading = $event" (notFound)="body.closeDialog()"></app-buscador>
     <app-body [fotos]="fotos" [noFound]="notFound" #body (isLoading)="isLoading = $event"></app-body>
     <app-footer></app-footer>
   </div>

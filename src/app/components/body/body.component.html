@@ -1,11 +1,11 @@
 <div id="container" *ngIf="noFound==true">
   <div id="alert2" class="alert2">¡imagenes no encontradas! INTENTA NUEVAMENTE.</div>
 </div>
-<div class="main-container" [class.blur]="isDialogOpen">
+<div class="main-container" [class.blur]="isDialogOpen" *ngIf="noFound==false">
   <div class="greca-container"></div>
   <div class="image-container">
     <div class="image-item" *ngFor="let foto of fotos; let i = index">
-      <img id="imagen{{i}}" [src]="foto.src.medium" alt="Imagen" (click)="verImagen(i)" />
+      <img id="imagen{{i}}" [src]="foto.src.medium" alt="Imagen" (click)="verImagen(i)" (load)="onImageLoad(i)" />
     </div>
   </div>
 </div>
