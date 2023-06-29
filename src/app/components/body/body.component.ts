@@ -38,31 +38,16 @@ export class BodyComponent {
       this.carga.closeAll();
       this.isLoading.emit(false);
     }
-    , 6000);
+    , 2000);
   }
 
-  //Codigo reducido
 
-  //Verificar la renderizacion de las imagenes
-  revicionRenImagenes() {
-    this.fotos.forEach((element: any) => {
-      if (element.render == false) {
-        this.render.listen(element, 'load', () => {
-          element.render = true;
-        });
-      }
-    });
+  //vericar la descarga de las imagenes
+  onImageLoad(index: number) {
+    console.log(`Imagen ${index + 1} cargada correctamente.`);
+    if (index + 1 === this.fotos.length) {
+      console.log('Todas las imagenes han sido cargadas correctamente.');
+      this.closeDialog();
+    }
   }
-  //verificar si termino de cargar las imagenes
-  verificarCargaImagenes() {
-    let intervalo = setInterval(() => {
-      if (this.fotos.length > 0) {
-        this.revicionRenImagenes();
-        clearInterval(intervalo);
-      }
-    }, 1000);
-    console.log("imagenes renderizadas");
-    this.closeDialog();
-  }
-  
 }
